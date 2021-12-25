@@ -15,6 +15,14 @@ public class PrologAdapterEnv extends Environment {
 
     @Override
     public void init(String[] args) {
+    // System.setProperty
+    //     ("java.library.path",
+    //      System.getProperty("java.library.path") + java.io.File.pathSeparator +
+    //      "/usr/lib/swi-prolog/lib/jpl.jar" + java.io.File.pathSeparator +
+    //      "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so"
+    //      );
+    // System.loadLibrary("jpl.jar");
+    // System.loadLibrary("libjpl.so");
         Query.oneSolution("consult('execute.pl')");
         // initial percepts
         addPercept(ld);
@@ -27,16 +35,16 @@ public class PrologAdapterEnv extends Environment {
     public boolean executeAction(String ag, Structure act) {
         System.out.println("Agent "+ag+" is doing "+act);
         clearPercepts();
-	// var result = Query.oneSolution("jpl_test_execute_action("+ag+","+act+",F)");
+    // var result = Query.oneSolution("jpl_test_execute_action("+ag+","+act+",F)");
 
-	// var result = Query.oneSolution
-	//     (
-	//      new Compound("jpl_test_execute_action",
-	// 		  new Term[] { new org.jpl7.Compound(ag),
-	// 			       new org.jpl7.Compound(act),
-	// 			       new Variable("F") }
-	// 		  )
-	//      );
+    // var result = Query.oneSolution
+    //     (
+    //      new Compound("jpl_test_execute_action",
+    //        new Term[] { new org.jpl7.Compound(ag),
+    //                 new org.jpl7.Compound(act),
+    //                 new Variable("F") }
+    //        )
+    //      );
         // System.out.println("Result "+result);
 
         if (act.getFunctor().equals("lock"))

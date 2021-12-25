@@ -22,5 +22,5 @@ CP="$CP:/usr/lib/swi-prolog/lib/jpl.jar:/usr/lib/swi-prolog/lib/x86_64-linux/lib
 # run jIDE
 java \
 -classpath $CP \
--Djava.library.path="/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib:/usr/lib/swi-prolog/lib/jpl.jar:/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so" \
+-Djava.library.path="/usr/lib/swi-prolog/lib/jpl.jar:/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" \
    org.gjt.sp.jedit.jEdit $1

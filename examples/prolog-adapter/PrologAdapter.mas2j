@@ -22,7 +22,8 @@ MAS prologadapter {
     executionControl: jason.control.ExecutionControl
 
     agents: porter; claustrophobe; paranoid;
-	
+    
     classpath: "/usr/lib/swi-prolog/lib/jpl.jar";
                "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so";
+
 }
