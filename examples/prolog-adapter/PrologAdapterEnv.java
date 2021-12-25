@@ -15,14 +15,6 @@ public class PrologAdapterEnv extends Environment {
 
     @Override
     public void init(String[] args) {
-    // System.setProperty
-    //     ("java.library.path",
-    //      System.getProperty("java.library.path") + java.io.File.pathSeparator +
-    //      "/usr/lib/swi-prolog/lib/jpl.jar" + java.io.File.pathSeparator +
-    //      "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so"
-    //      );
-    // System.loadLibrary("jpl.jar");
-    // System.loadLibrary("libjpl.so");
         Query.oneSolution("consult('execute.pl')");
         // initial percepts
         addPercept(ld);
@@ -35,24 +27,18 @@ public class PrologAdapterEnv extends Environment {
     public boolean executeAction(String ag, Structure act) {
         System.out.println("Agent "+ag+" is doing "+act);
         clearPercepts();
-    // var result = Query.oneSolution("jpl_test_execute_action("+ag+","+act+",F)");
+	var solution = Query.oneSolution("jpl_test_execute_action("+ag+","+act+",Result)");
+	var result = solution.get("Result");
+        System.out.println("Result " + result.toString());
 
-    // var result = Query.oneSolution
-    //     (
-    //      new Compound("jpl_test_execute_action",
-    //        new Term[] { new org.jpl7.Compound(ag),
-    //                 new org.jpl7.Compound(act),
-    //                 new Variable("F") }
-    //        )
-    //      );
-        // System.out.println("Result "+result);
-
-        if (act.getFunctor().equals("lock"))
+        if (result.toString().equals("locked")) {
+	    // System.out.println("doorLocked true");
             doorLocked = true;
-
-        if (act.getFunctor().equals("unlock"))
+	}
+        if (result.toString().equals("unlocked")) {
+	    // System.out.println("doorLocked false");
             doorLocked = false;
-
+	}
         // update percepts given state of the environment
         if (doorLocked)
             addPercept(ld);
@@ -63,3 +49,21 @@ public class PrologAdapterEnv extends Environment {
         return true;
     }
 }
+
+// var result = Query.oneSolution
+//     (
+//      new Compound("jpl_test_execute_action",
+//        new Term[] { new org.jpl7.Compound(ag),
+//                 new org.jpl7.Compound(act),
+//                 new Variable("F") }
+//        )
+//      );
+
+// System.setProperty
+//     ("java.library.path",
+//      System.getProperty("java.library.path") + java.io.File.pathSeparator +
+//      "/usr/lib/swi-prolog/lib/jpl.jar" + java.io.File.pathSeparator +
+//      "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so"
+//      );
+// System.loadLibrary("jpl.jar");
+// System.loadLibrary("libjpl.so");
