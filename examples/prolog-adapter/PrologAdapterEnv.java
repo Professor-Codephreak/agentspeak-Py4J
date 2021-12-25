@@ -15,7 +15,8 @@ public class PrologAdapterEnv extends Environment {
 
     @Override
     public void init(String[] args) {
-        Query.oneSolution("consult('execute.pl')");
+	Query.oneSolution("consult('execute_flp.pl')");
+        // Query.oneSolution("consult('execute.pl')");
         // initial percepts
         addPercept(ld);
     }

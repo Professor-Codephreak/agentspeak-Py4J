@@ -4,3 +4,5 @@
 jpl_test_execute_action(Agent,Action,Result) :-
 	(   (	Action = lock) -> Result = locked ;
 	    (	(   Action = unlock) -> Result = unlocked ; true)).
+
+
