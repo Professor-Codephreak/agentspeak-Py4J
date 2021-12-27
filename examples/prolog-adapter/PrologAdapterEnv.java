@@ -15,8 +15,8 @@ public class PrologAdapterEnv extends Environment {
 
     @Override
     public void init(String[] args) {
-	Query.oneSolution("consult('execute_flp.pl')");
-        // Query.oneSolution("consult('execute.pl')");
+    Query.oneSolution("consult('execute.pl')");
+        // Query.oneSolution("consult('execute_flp.pl')");
         // initial percepts
         addPercept(ld);
     }
@@ -28,18 +28,18 @@ public class PrologAdapterEnv extends Environment {
     public boolean executeAction(String ag, Structure act) {
         System.out.println("Agent "+ag+" is doing "+act);
         clearPercepts();
-	var solution = Query.oneSolution("jpl_test_execute_action("+ag+","+act+",Result)");
-	var result = solution.get("Result");
+    var solution = Query.oneSolution("jpl_test_execute_action("+ag+","+act+",Result)");
+    var result = solution.get("Result");
         System.out.println("Result " + result.toString());
 
         if (result.toString().equals("locked")) {
-	    // System.out.println("doorLocked true");
+        // System.out.println("doorLocked true");
             doorLocked = true;
-	}
+    }
         if (result.toString().equals("unlocked")) {
-	    // System.out.println("doorLocked false");
+        // System.out.println("doorLocked false");
             doorLocked = false;
-	}
+    }
         // update percepts given state of the environment
         if (doorLocked)
             addPercept(ld);
