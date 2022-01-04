@@ -25,7 +25,7 @@ MAS strategicdefenseadapter {
 
     // agents: porter; claustrophobe; paranoid;
     agents:
-	guardianagent guardianagent.asl [beliefs="continue"];
+    guardianagent guardianagent.asl [beliefs="continue"];
         jane wife.asl [beliefs=""];
         john husband.asl [beliefs=""];
     

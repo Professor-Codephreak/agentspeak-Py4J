@@ -37,7 +37,7 @@ public class LinuxRemoteControlAdapterEnv extends Environment {
         System.out.println("\t" + ag + " has no return value");
         // getEnvironmentInfraTier().getRuntimeServices().stopMAS();
         } else {
-        var string2 = "jpl_percepts("+ag+",Percepts,Result)";
+        var string2 = "jpl_perceive("+ag+",Percepts,Result)";
         System.out.println("  " + string2);
         var solution2 =  Query.oneSolution(string2);
         var percepts2 =  solution2.get("Percepts");

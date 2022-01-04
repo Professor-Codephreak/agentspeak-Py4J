@@ -12,7 +12,7 @@ public class PrologAgentAdapterEnv extends Environment {
 
     @Override
     public void init(String[] args) {
-	Query.oneSolution("consult('jason_prolog_agent_wrapper.pl')");
+    Query.oneSolution("consult('jason_prolog_agent_wrapper.pl')");
     }
 
     /**
@@ -24,38 +24,38 @@ public class PrologAgentAdapterEnv extends Environment {
 
         clearPercepts();
 
-	try {
-	    var string = "jpl_prolog_agent_execute_action("+ag+","+act+",Answers,Result)";
-	    System.out.println("\t" + string);
-	    var solution =  Query.oneSolution(string);
-	    var answers = solution.get("Answers");
-	    System.out.println("\t" + "Answers: " + answers);
-	    if (answers.isVariable()) {
-		// getEnvironmentInfraTier().getRuntimeServices().stopMAS();
-	    } else {
- 		Term[] arr = Util.listToTermArray(answers);
-		int i;
-		for (i = 0; i < arr.length; ++i) {
-		    Term oneTerm = arr[i];
-		    System.out.println("\t<<<" + oneTerm.toString() + ">>>");
-		    addPercept(Literal.parseLiteral(oneTerm.toString()));
-		}
-	    } 
-	    var result = solution.get("Result");
-	    System.out.println("\t" + "Result " + result.toString());
-	    if (result.toString().equals("fail")) {
-	    	System.out.println("\tFail");
-		return false;
-	    } else {
-	    	System.out.println("\tTrue");
-		return true;
-	    }
-	    // System.out.println("");
-	    // informAgsEnvironmentChanged();
-	} catch (Exception e) {
+    try {
+        var string = "jpl_prolog_agent_execute_action("+ag+","+act+",Answers,Result)";
+        System.out.println("\t" + string);
+        var solution =  Query.oneSolution(string);
+        var answers = solution.get("Answers");
+        System.out.println("\t" + "Answers: " + answers);
+        if (answers.isVariable()) {
+        // getEnvironmentInfraTier().getRuntimeServices().stopMAS();
+        } else {
+        Term[] arr = Util.listToTermArray(answers);
+        int i;
+        for (i = 0; i < arr.length; ++i) {
+            Term oneTerm = arr[i];
+            System.out.println("\t<<<" + oneTerm.toString() + ">>>");
+            addPercept(Literal.parseLiteral(oneTerm.toString()));
+        }
+        } 
+        var result = solution.get("Result");
+        System.out.println("\t" + "Result " + result.toString());
+        if (result.toString().equals("fail")) {
+            System.out.println("\tFail");
+        return false;
+        } else {
+            System.out.println("\tTrue");
+        return true;
+        }
+        // System.out.println("");
+        // informAgsEnvironmentChanged();
+    } catch (Exception e) {
             System.out.println("error executing " + ag + " for " + act + ": " + e.toString());
-	    // throw e;
-	    return false;
-	}
+        // throw e;
+        return false;
+    }
     }
 }
