@@ -1,3 +1,18 @@
+////////////////////////////////////////////////////////
+
+!package(systemFn('zenon','0.8.2')).
+
+////////////////////////////////////////////////////////
+
++!existsDirType(DirType,System,Result) <-
+	existsDirType(DirType,System);
+	Result = true.
+
+-!existsDirType(DirType,System,fail) <-
+ 	.print(['existsDirType/2 failed']).
+
+////////////////////////////////////////////////////////
+
 +!package(systemFn(Name,Version)) <-
 	!existsDirType(binaryDirectory,systemFn(Name,Version),Result);
 	Result == true;
@@ -23,22 +38,9 @@
 +!debian(systemFn(Name,Version)) <-
 	!existsDirType(debianDirectory,systemFn(Name,Version),Result);
 	Result1 == true;
-	.print(['Sandbox Debian Directory exists.']).
+	.print(['Debian Directory exists.']).
 
 -!debian(systemFn(Name,Version)) <-
-	.print(['Sandbox Debian Directory does not exist.']).
+	.print(['Debian Directory does not exist.']).
 
-+!existsDirType(DirType,System,Result) <-
-	existsDirType(DirType,System);
-	Result = true.
-
--!existsDirType(DirType,System,fail) <-
- 	.print(['existsDirType/2 failed']).
-
-// +!existsDirType(DirType,System) <-
-// 	existsDirType(DirType,System).
-
-// -!existsDirType(DirType,System) <-
-// 	.print(['existsDirType/2 failed']).
-
-!package(systemFn('zenon','0.8.2')).
+////////////////////////////////////////////////////////

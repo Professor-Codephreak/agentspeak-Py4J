@@ -8,19 +8,15 @@ import org.jpl7.Query;
 import org.jpl7.Term;
 import org.jpl7.Variable;
 
-public class StrategicDefenseAdapterEnv extends Environment {
+public class LinuxRemoteControlAdapterEnv extends Environment {
 
-    Literal init0  = Literal.parseLiteral("continue");
-    Literal init1  = Literal.parseLiteral("do(husband,physicallyAttack(husband,wife))");
-    Literal init2  = Literal.parseLiteral("do(wife,nothing)");
+    // Literal init0  = Literal.parseLiteral("continue");
 
     @Override
     public void init(String[] args) {
-	Query.oneSolution("consult('jason_strategic_defense_wrapper.pl')");
+	Query.oneSolution("consult('jason_linux_remote_control_wrapper.pl')");
         // initial percepts
         // addPercept(init0);
-        // addPercept(init1);
-        // addPercept(init2);
     }
 
     /**
@@ -33,29 +29,32 @@ public class StrategicDefenseAdapterEnv extends Environment {
         clearPercepts();
 
 	try {
-	    var string = "jpl_execute_action("+ag+","+act+",CurrentEvents,Result)";
-	    System.out.println("  " + string);
-	    var solution =  Query.oneSolution(string);
-	    var currentEvents = solution.get("CurrentEvents");
-	    if (currentEvents.isVariable()) {
-		System.out.println("\t" + ag + " has no currentEvents");
+	    var string1 = "jpl_execute_action("+ag+","+act+",Result)";
+	    System.out.println("  " + string1);
+	    var solution1 =  Query.oneSolution(string1);
+	    var result1 = solution.get("Result");
+	    if (result1.isVariable()) {
+		System.out.println("\t" + ag + " has no return value");
 		// getEnvironmentInfraTier().getRuntimeServices().stopMAS();
 	    } else {
+		var string2 = "jpl_percepts("+ag+",Percepts,Result)";
+		System.out.println("  " + string2);
+		var solution2 =  Query.oneSolution(string2);
+		var percepts2 =  solution1.get("Percepts");
+
 		// /System.out.println("\t" + ag + " currentEvents: " + currentEvents);
- 		Term[] arr = Util.listToTermArray(currentEvents);
+ 		Term[] arr = Util.listToTermArray(percepts2);
 		int i;
 		for (i = 0; i < arr.length; ++i) {
 		    Term oneTerm = arr[i];
 		    System.out.println("\t" + ag + " <<<" + oneTerm.toString() + ">>>");
 		    addPercept(Literal.parseLiteral(oneTerm.toString()));
 		}
-		var result = solution.get("Result");
+		var result2 = solution2.get("Result");
 		System.out.println("\t" + ag + " Result " + result.toString());
 	    } 
-	    // addPercept(init0);
 	    System.out.println("");
 	    informAgsEnvironmentChanged();
-
 	    return true;
 	} catch (Exception e) {
             System.out.println("error executing " + ag + " for " + act + ": " + e.toString());

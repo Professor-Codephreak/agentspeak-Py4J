@@ -20,7 +20,7 @@ public class PrologAgentAdapterEnv extends Environment {
      */
     @Override
     public boolean executeAction(String ag, Structure act) {
-        System.out.println("Agent "+ag+" is doing "+act);
+        System.out.println("\tAgent "+ag+" is doing "+act);
 
         clearPercepts();
 
@@ -44,10 +44,10 @@ public class PrologAgentAdapterEnv extends Environment {
 	    var result = solution.get("Result");
 	    System.out.println("\t" + "Result " + result.toString());
 	    if (result.toString().equals("fail")) {
-	    	System.out.println("Fail");
+	    	System.out.println("\tFail");
 		return false;
 	    } else {
-	    	System.out.println("True");
+	    	System.out.println("\tTrue");
 		return true;
 	    }
 	    // System.out.println("");

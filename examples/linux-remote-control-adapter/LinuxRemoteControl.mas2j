@@ -12,10 +12,10 @@ A Prometheus specification is available in the doc folder.
 
 */
 
-MAS strategicdefenseadapter {
+MAS linuxremotecontroladapter {
 
     environment:
-       StrategicDefenseAdapterEnv
+       LinuxRemoteControlAdapterEnv
 
     // synchronise the execution: an agent only
     // starts its next reasoning cycle when all others
@@ -23,12 +23,9 @@ MAS strategicdefenseadapter {
     executionControl:
        jason.control.ExecutionControl
 
-    // agents: porter; claustrophobe; paranoid;
     agents:
-	guardianagent guardianagent.asl [beliefs="continue"];
-        jane wife.asl [beliefs=""];
-        john husband.asl [beliefs=""];
-    
+	linux_agent agent1
+
     classpath:
         "/usr/lib/swi-prolog/lib/jpl.jar";
         "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so";

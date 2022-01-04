@@ -10,4 +10,4 @@ export LD_PRELOAD=$LD_PRELOAD:/usr/lib/libswipl.so
 export JASON_HOME=/var/lib/myfrdcsa/collaborative/git/jason/build
 
 ./scripts/jason-setup
-./scripts/jason-ide
+./scripts/jason-ide $1
