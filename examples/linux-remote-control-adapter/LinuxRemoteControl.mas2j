@@ -24,7 +24,7 @@ MAS linuxremotecontroladapter {
        jason.control.ExecutionControl
 
     agents:
-	linux_agent agent1
+       linux_agent agent1;
 
     classpath:
         "/usr/lib/swi-prolog/lib/jpl.jar";
