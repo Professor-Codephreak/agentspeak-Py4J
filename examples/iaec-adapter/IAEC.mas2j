@@ -1,4 +1,4 @@
-    /*
+/*
 In this system, two agents are inside a room and
 one agent (the claustrophobe) wants to maintain
 the door always unlocked, while another (the paranoid)
@@ -12,10 +12,10 @@ A Prometheus specification is available in the doc folder.
 
 */
 
-MAS linuxremotecontroladapter {
+MAS iaecadapter {
 
     environment:
-       LinuxRemoteControlAdapterEnv
+       IAECAdapterEnv
 
     // synchronise the execution: an agent only
     // starts its next reasoning cycle when all others
@@ -24,7 +24,7 @@ MAS linuxremotecontroladapter {
        jason.control.ExecutionControl
 
     agents:
-       linux_agent agent1;
+       iaec1 iaec [mindinspector="gui(cycle,html)"];
 
     classpath:
         "/usr/lib/swi-prolog/lib/jpl.jar";

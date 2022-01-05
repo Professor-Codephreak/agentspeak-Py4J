@@ -1,4 +1,5 @@
 start.
 
 +start <-
-	testAction.
+    testAction.
+
