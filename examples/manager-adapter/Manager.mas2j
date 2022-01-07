@@ -12,10 +12,10 @@ A Prometheus specification is available in the doc folder.
 
 */
 
-MAS iaecadapter {
+MAS manageradapter {
 
     environment:
-       IAECAdapterEnv
+       ManagerAdapterEnv
 
     // synchronise the execution: an agent only
     // starts its next reasoning cycle when all others
@@ -24,12 +24,10 @@ MAS iaecadapter {
        jason.control.ExecutionControl
 
     agents:
-       iaec1 iaec [mindinspector="gui(cycle,html)"];
-       //       prolog1 prolog [mindinspector="gui(cycle,html)"];
+       manager1 manager [mindinspector="gui(cycle,html)"];
 
     classpath:
         "/usr/lib/swi-prolog/lib/jpl.jar";
         "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so";
 
-    aslSourcePath: "src/asl";
 }
