@@ -14,14 +14,20 @@ flag(log,10).
 
 %% %% Contacting Prolog from Java
 
-jpl_execute_action(Agent,Action,Result) :-
+jpl_execute_action(JavaObject,Agent,Action,Result) :-
 	log(1,jpl_execute_action(Agent,Action,Result)),
 	jpl_new('SensorNetworkAdapterEnv',[],JRef),
 	jpl_call(JRef,'getEnvironment',[],Env),
-	log(1,[env,Env]),
-	jpl_call(Env,'receivePrologCall',[], Res1),
+	%% jpl_type_to_class(Env,EnvName),
+	log(1,[env,Env,envName,EnvName,javaObject,JavaObject]),
+	jpl_terms_to_array([p(x),p(z)],Arr),
+	jpl_call(Env,'receivePrologCall',[Arr], Res1),
+	%% alarm(3,,_),
 	log(1,[result,Res1]),
 	(   call(Action) -> Result = true ; Result = fail).
+
+doTest(Arg) :-
+	log(1,[arg,Arg]).
 
 %% this seems to work but I think has just created an extra
 %% environment, going to commit now and then tweak to see if there's
@@ -34,7 +40,7 @@ jpl_execute_action(Agent,Action,Result) :-
 %%       dictionary
 
 jpl_perceive(Agent,Percepts,Result) :-
-	Percepts = [],
+	Percepts = [p(y)],
 	Result = true.
 
 %% %% Contacting Java from Prolog

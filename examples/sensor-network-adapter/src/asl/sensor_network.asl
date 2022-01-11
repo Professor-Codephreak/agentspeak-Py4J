@@ -2,6 +2,8 @@ unknown(A) :-
     not(A) &
     not(~A).
 
++p(X) <-
+	.print("YAY!").
 
 test(isFileNameP,[atom(Item),unknown(isa(Item,existingFilename))],[exists_file(Item)],[isa(Item,existingFilename)]).
 test(isDirectoryP,[atom(Item),unknown(isa(Item,existingDirname))],[exists_directory(Item)],[isa(Item,existingDirname)]).
