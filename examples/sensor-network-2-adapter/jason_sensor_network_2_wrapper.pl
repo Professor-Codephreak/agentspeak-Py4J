@@ -1,10 +1,10 @@
-:- dynamic flag/2,isa/2.
-:- multifile flag/2,isa/2.
-:- discontiguous flag/2,isa/2.
+:- dynamic flag/2,isa/2,messageQueue/1.
+:- multifile flag/2,isa/2,messageQueue/1.
+:- discontiguous flag/2,isa/2,messageQueue/1.
 
 :- ensure_loaded('/var/lib/myfrdcsa/codebases/minor/strads-frdcsa/attempts/9/util.pl').
 
-isa(sensorNetwork,actor).
+isa(sensorNetwork2,actor).
 
 flag(jasonIntegration,true).
 flag(log,10).
@@ -15,22 +15,15 @@ flag(log,10).
 
 %% %% Contacting Prolog from Java
 
-
-
-jpl_execute_action(JavaObject,Agent,Action,Result) :-
+jpl_execute_action(Agent,Action,Result) :-
 	log(1,jpl_execute_action(Agent,Action,Result)),
-	jpl_new('SensorNetworkAdapterEnv',[],JRef),
-	jpl_call(JRef,'getEnvironment',[],Env),
-	%% jpl_type_to_class(Env,EnvName),
-	log(1,[env,Env,envName,EnvName,javaObject,JavaObject]),
-	jpl_terms_to_array([p(x),p(z)],Arr),
-	T = 2,
-	%% nb_setval(jref,Env),
-	Callback = jpl_call(Env,'receivePrologCall',[Arr], Res1),
-	%% call(Callback),
-	log(1,wtf),
-	log(1,alarmSet(T,Callback)),nl,
-	log(1,[result,Res1]),
+	%% jpl_terms_to_array([p(x),p(z)],Arr),
+	Arr = [p(x),p(z)],
+	log(1,array(Arr)),
+	alarm(1,queueMessageToJason(Arr),_ID1,[]),
+	alarm(2,queueMessageToJason(Arr),_ID2,[]),
+	alarm(3,queueMessageToJason(Arr),_ID3,[]),
+	log(1,queueMessageToJason(Arr)),
 	(   call(Action) -> Result = true ; Result = fail).
 
 doTest(Arg) :-
@@ -60,3 +53,12 @@ jpl_perceive(Agent,Percepts,Result) :-
 
 
 %% https://www.swi-prolog.org/pldoc/doc/_SWI_/library/jpl.pl
+
+queueMessageToJason(Goal) :-
+	log(1,[queueMessageToJason(Goal)]),
+	assertz(messageQueue(Goal)).
+
+jpl_poll_messages(_Agent,Goals) :-
+	findall(Goal,messageQueue(Goal),Goals),
+	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true),
+	retractall(messageQueue(_)).
