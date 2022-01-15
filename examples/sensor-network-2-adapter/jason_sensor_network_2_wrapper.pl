@@ -11,7 +11,11 @@ flag(log,10).
 
 %% :- consult('/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/sensor_network/sensor_network.pl').
 
-%% :- consult('/var/lib/myfrdcsa/codebases/minor/formalog-pengines/formalog_pengines.pl').
+prolog_consult(File) :-
+	consult(File).
+
+:- consult('/var/lib/myfrdcsa/codebases/minor/formalog-pengines/formalog_pengines.pl').
+:- start_agent(jasonSensorNetwork).
 
 %% %% Contacting Prolog from Java
 
