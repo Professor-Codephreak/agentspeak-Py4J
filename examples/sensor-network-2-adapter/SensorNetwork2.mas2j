@@ -24,12 +24,13 @@ MAS sensornetwork2adapter {
        jason.control.ExecutionControl
 
     agents:
-       sensor_network_2_1 sensor_network_2 [mindinspector="gui(cycle,html)"];
-       poll_prolog_1 poll_prolog [mindinspector="gui(cycle,html)"];
+       sensor_network_2_1 sensor_network_2 [nrcbp=25]; // [mindinspector="gui(cycle,html)"];
+       poll_prolog_1 poll_prolog [nrcbp=25]; // [mindinspector="gui(cycle,html)"];
 
     classpath:
         "/usr/lib/swi-prolog/lib/jpl.jar";
         "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so";
 
     aslSourcePath: "src/asl";
+
 }
