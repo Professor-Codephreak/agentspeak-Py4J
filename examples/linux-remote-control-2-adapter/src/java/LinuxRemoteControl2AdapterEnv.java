@@ -8,14 +8,14 @@ import org.jpl7.Query;
 import org.jpl7.Term;
 import org.jpl7.Variable;
 
-public class SensorNetwork2AdapterEnv extends Environment {
+public class LinuxRemoteControl2AdapterEnv extends Environment {
 
     // Literal init0  = Literal.parseLiteral("continue");
 
     @Override
     public void init(String[] args) {
-    Query.oneSolution("consult('jason_sensor_network_2_wrapper.pl')");
-        // initial percepts
+    Query.oneSolution("consult('jason_linux_remote_control_2_wrapper.pl')");
+        // initial perceptsd
         // addPercept(init0);
     }
 
