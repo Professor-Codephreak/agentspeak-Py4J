@@ -1,9 +1,12 @@
 +p(X) <-
-    .print("YAY!",X).
+	.print("YAY!",X).
 
 +!run <-
-    doTest(test).
-
+	// doTest(test);
+	get_directory_files('/var/lib/myfrdcsa/collaborative/git/jason',X);
+	.print("HEYA:",X).
+	
+	
 !run.
 
 // Should probably have an action that asserts into FreeKBS2 for long
