@@ -33,6 +33,7 @@ public class LinuxRemoteControl2AdapterEnv extends Environment {
     }
     System.out.println("Received call from Prolog");
     informAgsEnvironmentChanged();
+    System.out.println("Env Changed, Agents Informed");
     return "Received call from Prolog";
     }
 

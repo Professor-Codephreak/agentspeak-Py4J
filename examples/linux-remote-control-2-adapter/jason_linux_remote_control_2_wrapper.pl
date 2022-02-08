@@ -20,23 +20,13 @@ prolog_consult(File) :-
 %% %% Contacting Prolog from Java
 
 jpl_execute_action(Agent,Action,Result) :-
-	log(1,jpl_execute_action(Agent,Action,Result)),
-	%% jpl_terms_to_array([p(x),p(z)],Arr),
-	%% Arr = [p(x),p(z)],
-	%% log(1,array(Arr)),
-	call(Action),
+	log(1,jpl_execute_action(Agent,Action,Result)),nl,
+	(   call(Action) -> Result = true ; Result = fail),
 	queueMessageToJason([Action]),
-	%% alarm(1,queueMessageToJason(Arr),_ID1,[]),
-	%% alarm(2,queueMessageToJason(Arr),_ID2,[]),
-	%% alarm(3,queueMessageToJason(Arr),_ID3,[]),
-	log(1,queueMessageToJason(Arr)),
-	(   call(Action) -> Result = true ; Result = fail).
+	log(1,jpl_execute_action(Agent,Action,Result)),nl.
 
 doTest(Arg) :-
 	log(1,[arg,Arg]).
-
-get_directory_files(Dir,directoryFiles(X)) :-
-	directory_files(Dir,X).
 
 %% this seems to work but I think has just created an extra
 %% environment, going to commit now and then tweak to see if there's
