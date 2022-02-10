@@ -1,17 +1,40 @@
 +p(X) <-
 	.print("YAY!",X).
 
-+directory_files(A,B) <-
-	.print('MY: directory_files(',A,',',B,').').
 
-+doTest(X) <-
-	.print('WTF: doTest(',X,').').
+//+doTest(X) <-
+// 	.print('WTF: doTest(',X,').').
 
 +!run <-
-	doTest(test);
-	directory_files('/var/lib/myfrdcsa/collaborative/git/jason/src',X);
-	findall(X,member(X,[a,b,c,d]),Xs);
-	query_agent_bindings(flp,'localhost',[Persons],allInstances(person,Persons),Results).
+	// doTest(test);
+	!x(directory_files('/var/lib/myfrdcsa/collaborative/git/jason',X));
+	.print('MY FILES: ',X).
+
+// +directory_files(A,B)[source(percept)] <-
+// 	+directory_files(A,B)[source(self)].
+
+// +Prolog[source(percept)] : Prolog =.. [Pred|_] & member(Pred,[directory_files]) <-
+// 	+Prolog[source(self)].
+
++Prolog[source(percept)] <-
+	+Prolog[source(self)].
+
++!x(Term) <-
+	Term;
+	.wait(50);
+	// .print('DID THIS REALLY WORK?');
+	?Term[source(self)].
+
+// +!run <-
+// 	doTest(test);
+// 	directory_files('/var/lib/myfrdcsa/collaborative/git/jason/src',X);
+// 	.wait(100);
+// 	?directory_files(Y,Zs)[source(self)];
+// 	// .findall(Z,directory_files(Y,Z)[source(self)],Zs);
+// 	.print('MY PERSONS: ',Zs).
+
+// //	findall(X,member(X,[a,b,c,d]),Xs);
+// //	query_agent_bindings(flp,'localhost',[Persons],allInstances(person,Persons),Results).
 	
 !run.
 

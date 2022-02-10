@@ -25,7 +25,7 @@ MAS linuxremotecontrol2adapter {
 
     agents:
        linux_remote_control_2_1 linux_remote_control_2; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
-       poll_prolog_1 poll_prolog [nrcbp=25]; // [mindinspector="gui(cycle,html)"];
+       poll_prolog_1 poll_prolog; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
 
     classpath:
         "/usr/lib/swi-prolog/lib/jpl.jar";
