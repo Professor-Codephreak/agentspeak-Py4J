@@ -25,6 +25,13 @@ jpl_execute_action(Agent,Action,Result) :-
 	queueMessageToJason([Action]),
 	log(1,jpl_execute_action(Agent,Action,Result)),nl.
 
+%% jpl_execute_action(Agent,Action,Result) :-
+%% 	log(1,jpl_execute_action(Agent,Action,Result)),nl,
+%% 	(   findall(Action,Action,Results) -> Result = true ; Result = fail),
+%% 	queueMessageToJason([Action]),
+%% 	log(1,jpl_execute_action(Agent,Action,Result)),nl.
+
+
 doTest(Arg) :-
 	log(1,[arg,Arg]).
 
@@ -61,3 +68,6 @@ jpl_poll_messages(_Agent,Goals) :-
 	findall(Goal,messageQueue(Goal),Goals),
 	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true),
 	retractall(messageQueue(_)).
+
+flp(Vars,Term) :-
+	query_agent_bindings(flp,'localhost',Vars,Term,Results).
