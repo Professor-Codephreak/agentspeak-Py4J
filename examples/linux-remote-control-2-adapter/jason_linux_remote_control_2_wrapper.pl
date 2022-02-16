@@ -3,6 +3,7 @@
 :- discontiguous flag/2,isa/2,messageQueue/1.
 
 :- ensure_loaded('/var/lib/myfrdcsa/codebases/minor/strads-frdcsa/attempts/9/util.pl').
+:- ensure_loaded('/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/jason_linux_remote_control_2_helper.pl').
 
 isa(linuxRemoteControl2,actor).
 
