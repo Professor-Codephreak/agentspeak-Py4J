@@ -4,22 +4,22 @@
 +Prolog[source(percept)] <-
 	+Prolog[source(self)].
 
-// +!x(Term) <-
-// 	Term;
-// 	.wait(2000);
-// 	?Term[source(self)].
-// 
-// -!x(Term) <-
-// 	.print('wah wah').
-
 +?x(Term) <-
-	.concat("+",Term," : true <- .print(",Term,").",Plan);
-	.print('Generated Plan: ',Plan);
-	.add_plan(Plan);
+	.concat('+',Term,Trigger);
+	.relevant_plans(Trigger,RelevantPlans);
+	.length(RelevantPlans,L1);
+	if (L1 == 0) {
+		      .concat("+",Term," : true <- .print(",Term,").",Plan);
+		      .print('Generated Plan: ',Plan);
+		      .add_plan(Plan);
+		     };
 	Term;
 	!waitOn(Term);
 	?Term[source(self)];
-	-Term.
+	-Term[source(self)].
+
+-?x(Term) <-
+	.print('wah wah').
 
 +!waitOn(Term) <-
 	if (not .belief(Term)) {
@@ -27,10 +27,6 @@
 				.print('.');
 				!waitOn(Term)
 			       }.
-
--?x(Term) <-
-	.print('wah wah').
-
 
 +!run1 <-
 	!x(directory_files('/var/lib/myfrdcsa/collaborative/git/jason',X));
@@ -72,14 +68,36 @@
 // !pwd(Dir).
 // !cd(Dir,'/tmp').
 
-+!test <-
+// +!test <-
+// 	!sys(pwd,Result);
+// 	.print('Result: ',Result);
+// 	!chomp(Result,Chomped);
+// 	.print('Chomped: ',Chomped);
+// 	!cd(Chomped,'/tmp');
+// 	!sys(pwd,NewResult);
+// 	.print('NewResult: ',NewResult);
+// 	!chomp(NewResult,NewChomped);
+// 	.print('NewChomped: ',NewChomped).
+
++!test(I) <-
+	.print('I: ',I);
 	!sys(pwd,Result);
-	.print('Result: ',Chomped);
+	.print('Result: ',Result);
 	!chomp(Result,Chomped);
 	.print('Chomped: ',Chomped);
-	!cd(Chomped,'/tmp').
+	!cd(Chomped,'/tmp');
+	!sys(pwd,NewResult);
+	.print('NewResult: ',NewResult);
+	!chomp(NewResult,NewChomped);
+	.print('NewChomped: ',NewChomped);
+	if (I < 100) {
+		     !test(I + 1);
+        }.
 
-!test.
+-!test(_) <-
+	true.
+
+!test(1).
 
 ////////////////////////////////////////////////////////////////////////////////////
 
