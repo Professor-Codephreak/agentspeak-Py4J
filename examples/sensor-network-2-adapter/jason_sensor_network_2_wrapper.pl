@@ -21,13 +21,13 @@ prolog_consult(File) :-
 
 jpl_execute_action(Agent,Action,Result) :-
 	log(1,jpl_execute_action(Agent,Action,Result)),
-	%% jpl_terms_to_array([p(x),p(z)],Arr),
-	Arr = [p(x),p(z)],
-	log(1,array(Arr)),
-	alarm(1,queueMessageToJason(Arr),_ID1,[]),
-	alarm(2,queueMessageToJason(Arr),_ID2,[]),
-	alarm(3,queueMessageToJason(Arr),_ID3,[]),
-	log(1,queueMessageToJason(Arr)),
+	%% %% jpl_terms_to_array([p(x),p(z)],Arr),
+	%% Arr = [p(x),p(z)],
+	%% log(1,array(Arr)),
+	%% alarm(1,queueMessageToJason(Arr),_ID1,[]),
+	%% alarm(2,queueMessageToJason(Arr),_ID2,[]),
+	%% alarm(3,queueMessageToJason(Arr),_ID3,[]),
+	%% log(1,queueMessageToJason(Arr)),
 	(   call(Action) -> Result = true ; Result = fail).
 
 doTest(Arg) :-

@@ -79,18 +79,29 @@
 // 	!chomp(NewResult,NewChomped);
 // 	.print('NewChomped: ',NewChomped).
 
+// +!test(I) <-
+// 	.print('I: ',I);
+// 	!sys(pwd,Result);
+// 	.print('Result: ',Result);
+// 	!chomp(Result,Chomped);
+// 	.print('Chomped: ',Chomped);
+// 	!cd(Chomped,'/tmp');
+// 	!sys(pwd,NewResult);
+// 	.print('NewResult: ',NewResult);
+// 	!chomp(NewResult,NewChomped);
+// 	.print('NewChomped: ',NewChomped);
+// 	if (I < 100) {
+// 		     !test(I + 1);
+//         }.
+
 +!test(I) <-
 	.print('I: ',I);
 	!sys(pwd,Result);
 	.print('Result: ',Result);
 	!chomp(Result,Chomped);
 	.print('Chomped: ',Chomped);
-	!cd(Chomped,'/tmp');
-	!sys(pwd,NewResult);
-	.print('NewResult: ',NewResult);
-	!chomp(NewResult,NewChomped);
-	.print('NewChomped: ',NewChomped);
 	if (I < 100) {
+		      .wait(200);
 		     !test(I + 1);
         }.
 
