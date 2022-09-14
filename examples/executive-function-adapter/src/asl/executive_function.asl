@@ -3,8 +3,18 @@
 
 // FIXME: Do we need this vvv ?  If we enable it, it does not generate
 // plans. if we disable it, then it might not input beliefs correctly
+
++flp_ask_user('[|]'(Question,'[]'),Answer) <-
+	-flp_ask_user('[|]'(Question,'[]'),Answer);
+	+flp_ask_user([Question],Answer);
+	.print('Converted: ',flp_ask_user([Question],Answer)).
+
+-flp_ask_user('[|]'(Question,'[]'),Answer)[source(percept)] <-
+	.print('Converting...').
+
 +Prolog[source(percept)] <-
  	+Prolog[source(self)].
+
 
 +?x(Term) <-
 	.concat('+',Term,Trigger);
@@ -141,5 +151,9 @@
 // +Prolog[source(percept)] : Prolog =.. [Pred|_] & member(Pred,[directory_files]) <-
 // 	+Prolog[source(self)].
 
-{ include("/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/executive-function/agent2.asl") }
-{ include("/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/executive-function/ef_agent.asl") }
+/* { include("/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/executive-function/agent2.asl") }
+   { include("/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/executive-function/ef_agent.asl") }
+*/
+
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/ef_agent.asl") }

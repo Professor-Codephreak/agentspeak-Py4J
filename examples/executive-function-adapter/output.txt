@@ -1,0 +1,177 @@
+andrewdo@ai2:/var/lib/myfrdcsa/collaborative/git/jason$ ./run-executive-function.sh 
+Jade jar is not properly set!
+Value is /var/lib/myfrdcsa/collaborative/git/jason/build/libs/JadeJar
+Jade jar is not properly set!
+Value is /var/lib/myfrdcsa/collaborative/git/jason/build/libs/JadeJar
+Executing /usr/lib/jvm/adoptopenjdk-16-hotspot-amd64/bin/java -classpath /media/andrewdo/s3/sandbox-new/jason-20211129/jason-20211129/build/libs/ant-launcher-1.10.5.jar org.apache.tools.ant.launch.Launcher -e -f bin/executivefunctionadapter.xml run
+Buildfile: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/bin/executivefunctionadapter.xml
+
+init:
+
+user-init:
+
+compile:
+
+run:
+Running project executivefunctionadapter
+Prolog-Loading-include: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/shell-utils.pl
+Prolog-Loading-include: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/regex.pl
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:24:
+	Redefined static procedure view/1
+	Previously defined at /var/lib/myfrdcsa/codebases/minor/strads-frdcsa/attempts/9/util.pl:24
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:137:
+	Singleton variables: [Project]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:222:
+	Singleton variables: [Dir]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:234:
+	Singleton variables: [Project]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:239:
+	Singleton variables: [Project,Dir]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:258:
+	Singleton variables: [Project]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:263:
+	Singleton variables: [Project,Dir]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:271:
+	Singleton variables: [FileProlog]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:284:
+	Singleton variables: [Thing]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:294:
+	Singleton variables: [Dir,Extension]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:302:
+	Singleton variables: [Thing]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:313:
+	Singleton variables: [Dir,Extension]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:330:
+	Singleton variables: [File]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:361:
+	Singleton variables: [Dir,Regex]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:376:
+	Singleton variables: [Dir]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:471:
+	Singleton variables: [R]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:541:
+	Singleton variables: [R]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:558:
+	Singleton variables: [R]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:566:
+	Singleton variables: [R]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:664:
+	Singleton variables: [CapitalizedAtom]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:700:
+	Singleton variables: [Output]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:724:
+	Singleton variables: [R,C,A]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:772:
+	Singleton variables: [A]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:862:
+	Singleton variables: [Result,Last,A]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:952:
+	Singleton variables: [A]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:1072:
+	Singleton variables: [Modules]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:1170:
+	Singleton variables: [N]
+Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:1170:
+	Singleton variable in branch: N
+Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_helper.pl:8:
+	Singleton variables: [BaseName]
+Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_wrapper.pl:15:
+	Redefined static procedure prolog_consult/1
+	Previously defined at /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:156
+ERROR: /var/lib/myfrdcsa/codebases/minor/formalog-pengines/client-server/server/larkc_api.pl:19:
+	No permission to declare safe_goal `system:cl_eval(_4824,_4826)'
+Warning: /var/lib/myfrdcsa/codebases/minor/formalog-pengines/attempts/pengines/1/scripts/formalog_pengines_call.pl:6:
+	Singleton variables: [End]
+Warning: /var/lib/myfrdcsa/codebases/minor/formalog-pengines/attempts/pengines/1/scripts/formalog_pengines_call.pl:66:
+	Singleton variables: [MYRESULT,MYRESULTS]
+Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_wrapper.pl:19:
+	Goal (directive) failed: user:start_agent(jasonExecutiveFunction)
+Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_wrapper.pl:49:
+	Singleton variables: [Agent]
+Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_wrapper.pl:73:
+	Singleton variables: [Results]
+Jason Http Server running on http://127.0.1.1:3272
+[executive_function_1] 'Plan: '+!pwd(Dir) <- ?x(currentDirectory(Dir)); .print("Command Succeeded: ",pwd(Dir)).
+
+[executive_function_1] 'Fail Event: '-!pwd(Dir) <- .print("Command Failed: ",pwd(Dir)).
+
+[executive_function_1] 'Plan: '+!sys(CLICommand,Result) <- ?x(shell_command_to_string(CLICommand,Result)); .print("Command Succeeded: ",sys(CLICommand,Result)).
+
+[executive_function_1] 'Fail Event: '-!sys(CLICommand,Result) <- .print("Command Failed: ",sys(CLICommand,Result)).
+
+[executive_function_1] 'Plan: '+!chomp(Input,Output) <- ?x(normalize_space(atom(Output),Input)); .print("Command Succeeded: ",chomp(Input,Output)).
+
+[executive_function_1] 'Fail Event: '-!chomp(Input,Output) <- .print("Command Failed: ",chomp(Input,Output)).
+
+[executive_function_1] 'Plan: '+!cd(Dir1,Dir2) <- ?x(cd(Dir2)); .print("Command Succeeded: ",cd(Dir1,Dir2)).
+
+[executive_function_1] 'Fail Event: '-!cd(Dir1,Dir2) <- .print("Command Failed: ",cd(Dir1,Dir2)).
+
+[executive_function_1] 'Plan: '+!flp_ask(Question,Answer) <- ?x(flp_ask_user(Question,Answer)); .print("Command Succeeded: ",flp_ask(Question,Answer)).
+
+[executive_function_1] 'Fail Event: '-!flp_ask(Question,Answer) <- .print("Command Failed: ",flp_ask(Question,Answer)).
+
+[executive_function_1] 'Plans and Fail Events: '[["+!pwd(Dir) <- ?x(currentDirectory(Dir)); .print("Command Succeeded: ",pwd(Dir)).","-!pwd(Dir) <- .print("Command Failed: ",pwd(Dir))."],["+!sys(CLICommand,Result) <- ?x(shell_command_to_string(CLICommand,Result)); .print("Command Succeeded: ",sys(CLICommand,Result)).","-!sys(CLICommand,Result) <- .print("Command Failed: ",sys(CLICommand,Result))."],["+!chomp(Input,Output) <- ?x(normalize_space(atom(Output),Input)); .print("Command Succeeded: ",chomp(Input,Output)).","-!chomp(Input,Output) <- .print("Command Failed: ",chomp(Input,Output))."],["+!cd(Dir1,Dir2) <- ?x(cd(Dir2)); .print("Command Succeeded: ",cd(Dir1,Dir2)).","-!cd(Dir1,Dir2) <- .print("Command Failed: ",cd(Dir1,Dir2))."],["+!flp_ask(Question,Answer) <- ?x(flp_ask_user(Question,Answer)); .print("Command Succeeded: ",flp_ask(Question,Answer)).","-!flp_ask(Question,Answer) <- .print("Command Failed: ",flp_ask(Question,Answer))."]]
+Agent executive_function_1 is doing flp_ask_user(['Please state your task/objective: '],_45)
+  jpl_execute_action(executive_function_1,flp_ask_user(['Please state your task/objective: '],_45),Result)
+ jpl_execute_action(executive_function_1,flp_ask_user([Please state your task/objective: ],_10),_18)
+
+[executive_function_1] 'Relevant Plans: '[{ @p__4[source(self),url("file:src/asl/executive_function.asl")] +_47[source(percept)] <- +_47[source(percept)] }]
+[executive_function_1] 'Generated Plan: '+flp_ask_user(['Please state your task/objective: '],_45) : true <- .print("x/1",flp_ask_user(['Please state your task/objective: '],_45)).
+query_agent_bindings(Agent, Host, Vars, Message, Results) :-
+    query_agent(Agent, Host, Message, Result),
+    findall(Vars,
+            ( member(Entry, Result),
+              Message=Entry
+            ),
+            Results).
+
+[location,'http://localhost:9881']
+ [queueMessageToJason([flp_ask_user([Please state your task/objective: ],Finish executive function system)])]
+ jpl_execute_action(executive_function_1,flp_ask_user([Please state your task/objective: ],Finish executive function system),true)
+
+ [goals,[[flp_ask_user([Please state your task/objective: ],Finish executive function system)]]]
+JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Please state your task/objective: ', '[]'), 'Finish executive function system'), '[]'), '[]')
+Started call from Prolog
+  jpl_perceive(executive_function_1,Percepts,Result)
+XXXXX: <<<flp_ask_user('[|]'('Please state your task/objective: ', '[]'), 'Finish executive function system')>>>
+Received call from Prolog
+	executive_function_1 Result true
+Env Changed, Agents Informed
+
+Agent executive_function_1 is doing flp_ask_user(['Please review: ','Finish executive function system','.  Is it an objective or a task: '],_51)
+  jpl_execute_action(executive_function_1,flp_ask_user(['Please review: ','Finish executive function system','.  Is it an objective or a task: '],_51),Result)
+ jpl_execute_action(executive_function_1,flp_ask_user([Please review: ,Finish executive function system,.  Is it an objective or a task: ],_3330),_3338)
+
+query_agent_bindings(Agent, Host, Vars, Message, Results) :-
+    query_agent(Agent, Host, Message, Result),
+    findall(Vars,
+            ( member(Entry, Result),
+              Message=Entry
+            ),
+            Results).
+
+[location,'http://localhost:9881']
+ [queueMessageToJason([flp_ask_user([Please review: ,Finish executive function system,.  Is it an objective or a task: ],_3330)])]
+ jpl_execute_action(executive_function_1,flp_ask_user([Please review: ,Finish executive function system,.  Is it an objective or a task: ],_3330),fail)
+
+ [goals,[[flp_ask_user([Please review: ,Finish executive function system,.  Is it an objective or a task: ],_48)]]]
+  jpl_perceive(executive_function_1,Percepts,Result)
+JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Please review: ', '[|]'('Finish executive function system', '[|]'('.  Is it an objective or a task: ', '[]'))), _4959), '[]'), '[]')
+	executive_function_1 Result true
+
+Started call from Prolog
+XXXXX: <<<flp_ask_user('[|]'('Please review: ', '[|]'('Finish executive function system', '[|]'('.  Is it an objective or a task: ', '[]'))), _4959)>>>
+Received call from Prolog
+Env Changed, Agents Informed
+[executive_function_1] x/1flp_ask_user(['Please state your task/objective: '],'Finish executive function system')
+[executive_function_1] 'Converting...'
+[executive_function_1] 'Converted: 'flp_ask_user(['Please state your task/objective: '],'Finish executive function system')
+[executive_function_1] Command Succeeded: flp_ask(['Please state your task/objective: '],'Finish executive function system')
+[executive_function_1] 'ENTRY HERE: ''Finish executive function system'
+[executive_function_1] 'Relevant Plans: '[{ @p__4[source(self),url("file:src/asl/executive_function.asl")] +_53[source(percept)] <- +_53[source(percept)] }]
+[executive_function_1] 'Generated Plan: '+flp_ask_user(['Please review: ','Finish executive function system','.  Is it an objective or a task: '],_51) : true <- .print("x/1",flp_ask_user(['Please review: ','Finish executive function system','.  Is it an objective or a task: '],_51)).
+[executive_function_1] '.'
+[executive_function_1] '.'
+[executive_function_1] '.'
+
