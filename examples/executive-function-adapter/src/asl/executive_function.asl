@@ -1,15 +1,23 @@
 +p(X) <-
 	.print("YAY!",X).
 
+// FIXME: Do we need this vvv ?  If we enable it, it does not generate
+// plans. if we disable it, then it might not input beliefs correctly
 +Prolog[source(percept)] <-
-	+Prolog[source(self)].
+ 	+Prolog[source(self)].
 
 +?x(Term) <-
 	.concat('+',Term,Trigger);
 	.relevant_plans(Trigger,RelevantPlans);
+	.print('Relevant Plans: ',RelevantPlans);
 	.length(RelevantPlans,L1);
-	if (L1 == 0) {
-		      .concat("+",Term," : true <- .print(",Term,").",Plan);
+
+	/* FIXME: originally L1 == 0, but the above source(percept)
+	   code was messing it up, could not get it to do 0 or 1
+	*/
+
+	if (L1 == 1) {
+		      .concat("+",Term," : true <- .print(\"x/1\",",Term,").",Plan);
 		      .print('Generated Plan: ',Plan);
 		      .add_plan(Plan);
 		     };
@@ -47,8 +55,14 @@
 	?flp([Persons],allInstances(person,Persons));
 	.print('MY PERSONS: ',Persons).
 
+// +query_agent_bindings(flp, localhost, _, allInstances(person, _), Persons) <-
+// 	.print('THE PERSONS: ',Persons).
+
 +query_agent_bindings(flp, localhost, _, allInstances(person, _), Persons) <-
-	.print('THE PERSONS: ',Persons).
+	+allInstances(person,Persons).
+
++query_agent_bindings(flp, localhost, _, flp_ask_user(Question, _), Results) <-
+	+flp_ask_user(Question,Results).
 
 +!run5 <-
 	query_agent_bindings(flp,'localhost',[Persons],allInstances(person,Persons),Results);
@@ -64,7 +78,6 @@
 
 // !run5.
 
-!initializeCommands.
 // !pwd(Dir).
 // !cd(Dir,'/tmp').
 
@@ -108,7 +121,17 @@
 -!test(_) <-
 	true.
 
-!test(1).
+// !test(1).
+
+
++!run6 <-
+	!initializeCommands;
+	.wait(1000);
+	!elicit_entry(andrewDougherty,Entry,Type);
+	.print('Entry: ',Entry,'.  Type: ',Type).
+
+!run6.
+
 
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -119,3 +142,4 @@
 // 	+Prolog[source(self)].
 
 { include("/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/executive-function/agent2.asl") }
+{ include("/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/executive-function/ef_agent.asl") }
