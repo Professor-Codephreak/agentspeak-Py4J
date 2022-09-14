@@ -27,7 +27,7 @@
 	*/
 
 	if (L1 == 1) {
-		      .concat("+",Term," : true <- .print(\"x/1\",",Term,").",Plan);
+		      .concat("+",Term," : true <- .print(\"x/1: \",",Term,").",Plan);
 		      .print('Generated Plan: ',Plan);
 		      .add_plan(Plan);
 		     };
@@ -46,76 +46,8 @@
 				!waitOn(Term)
 			       }.
 
-+!run1 <-
-	!x(directory_files('/var/lib/myfrdcsa/collaborative/git/jason',X));
-	.print('MY FILES: ',X).
-
-+!run2 <-
-	!x(member(X,[a,b,c]));
-	.print('MY MEMBERS: ',Persons).
-
-+!run3 <-
-	!x(flp([Persons],allInstances(person,Persons)));
-	.print('MY PERSONS: ',Persons).
-
-+!run4 <-
-	// !x(flp([Persons],allInstances(person,Persons)));
-	flp([Persons],allInstances(person,Persons));
-	.wait(2000);
-	?flp([Persons],allInstances(person,Persons));
-	.print('MY PERSONS: ',Persons).
-
-// +query_agent_bindings(flp, localhost, _, allInstances(person, _), Persons) <-
-// 	.print('THE PERSONS: ',Persons).
-
-+query_agent_bindings(flp, localhost, _, allInstances(person, _), Persons) <-
-	+allInstances(person,Persons).
-
 +query_agent_bindings(flp, localhost, _, flp_ask_user(Question, _), Results) <-
 	+flp_ask_user(Question,Results).
-
-+!run5 <-
-	query_agent_bindings(flp,'localhost',[Persons],allInstances(person,Persons),Results);
-	.print('IS THIS ALREADY ANSWERED?: ',Results).
-
-// !run1.
-
-// !run2.
-
-// !run3.
-
-// !run4.
-
-// !run5.
-
-// !pwd(Dir).
-// !cd(Dir,'/tmp').
-
-// +!test <-
-// 	!sys(pwd,Result);
-// 	.print('Result: ',Result);
-// 	!chomp(Result,Chomped);
-// 	.print('Chomped: ',Chomped);
-// 	!cd(Chomped,'/tmp');
-// 	!sys(pwd,NewResult);
-// 	.print('NewResult: ',NewResult);
-// 	!chomp(NewResult,NewChomped);
-// 	.print('NewChomped: ',NewChomped).
-
-// +!test(I) <-
-// 	.print('I: ',I);
-// 	!sys(pwd,Result);
-// 	.print('Result: ',Result);
-// 	!chomp(Result,Chomped);
-// 	.print('Chomped: ',Chomped);
-// 	!cd(Chomped,'/tmp');
-// 	!sys(pwd,NewResult);
-// 	.print('NewResult: ',NewResult);
-// 	!chomp(NewResult,NewChomped);
-// 	.print('NewChomped: ',NewChomped);
-// 	if (I < 100) {
-// 		     !test(I + 1);
-//         }.
 
 +!test(I) <-
 	.print('I: ',I);
@@ -142,18 +74,6 @@
 
 !run6.
 
-
-////////////////////////////////////////////////////////////////////////////////////
-
-// Should probably have an action that asserts into FreeKBS2 for long
-// time storage.  need to finish query/retractall.
-
-// +Prolog[source(percept)] : Prolog =.. [Pred|_] & member(Pred,[directory_files]) <-
-// 	+Prolog[source(self)].
-
-/* { include("/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/executive-function/agent2.asl") }
-   { include("/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/executive-function/ef_agent.asl") }
-*/
 
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/ef_agent.asl") }
