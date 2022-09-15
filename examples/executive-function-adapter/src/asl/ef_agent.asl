@@ -10,8 +10,6 @@
 //      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_helper.pl
 //      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_wrapper.pl
 
-
-
 +!elicit_entry(Agent,Entry,Type) <-
 	!flp_ask(['Please state your task/objective: '],Entry);
 	.print(classify_entry(Agent,Entry,Type));
@@ -51,14 +49,10 @@
 
 +!get_subgoals_for_objective(Agent,Objective,Subgoals) <-
 	.print('Researching subgoals to achieve objective');
-	!flp_query([hasSubgoal(Objective,_Subgoal)],Subgoal);
-	.print('Subgoal: ',Subgoal);
-	Subgoal = '[|]'(FirstSubgoal,'[]');
-	.print('FirstSubgoal: ',FirstSubgoal).
-	// +!elicit_entry(Agent,FirstSubgoal,Type).
+	!flp_query([hasSubgoal(Objective,_Subgoal)],Subgoals);
+	.print('Subgoal: ',Subgoals);
+	!convert_from_pengine_list_to_jason_list(Subgoals,List);
+	.print('List: ',List).
 
 +!get_subtasks_for_task(Agent,Task,Tasks) <-
-	// ?hasObjective(Agent,Objective);
 	.print('hi').
-
-

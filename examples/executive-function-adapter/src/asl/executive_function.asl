@@ -60,6 +60,14 @@
 -flp_query_flp('[|]'(Query,'[]'),Response)[source(percept)] <-
 	.print('Converting...').
 
++!convert_from_pengine_list_to_jason_list('[]',Output) <-
+	Output = [].
+
++!convert_from_pengine_list_to_jason_list(Input,Output) <-
+	Input = '[|]'(First,Second);
+	!convert_from_pengine_list_to_jason_list(Second,Result);
+	.concat([First],Result,Output).
+
 +!run6 <-
 	!initializeCommands;
 	.wait(1000);
