@@ -112,12 +112,10 @@ Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-a
 [executive_function_1] 'Fail Event: '-!flp_ask(Question,Answer) <- .print("Command Failed: ",flp_ask(Question,Answer)).
 
 [executive_function_1] 'Plans and Fail Events: '[["+!pwd(Dir) <- ?x(currentDirectory(Dir)); .print("Command Succeeded: ",pwd(Dir)).","-!pwd(Dir) <- .print("Command Failed: ",pwd(Dir))."],["+!sys(CLICommand,Result) <- ?x(shell_command_to_string(CLICommand,Result)); .print("Command Succeeded: ",sys(CLICommand,Result)).","-!sys(CLICommand,Result) <- .print("Command Failed: ",sys(CLICommand,Result))."],["+!chomp(Input,Output) <- ?x(normalize_space(atom(Output),Input)); .print("Command Succeeded: ",chomp(Input,Output)).","-!chomp(Input,Output) <- .print("Command Failed: ",chomp(Input,Output))."],["+!cd(Dir1,Dir2) <- ?x(cd(Dir2)); .print("Command Succeeded: ",cd(Dir1,Dir2)).","-!cd(Dir1,Dir2) <- .print("Command Failed: ",cd(Dir1,Dir2))."],["+!flp_ask(Question,Answer) <- ?x(flp_ask_user(Question,Answer)); .print("Command Succeeded: ",flp_ask(Question,Answer)).","-!flp_ask(Question,Answer) <- .print("Command Failed: ",flp_ask(Question,Answer))."]]
-Agent executive_function_1 is doing flp_ask_user(['Please state your task/objective: '],_43)
-  jpl_execute_action(executive_function_1,flp_ask_user(['Please state your task/objective: '],_43),Result)
+Agent executive_function_1 is doing flp_ask_user(['Please state your task/objective: '],_42)
+  jpl_execute_action(executive_function_1,flp_ask_user(['Please state your task/objective: '],_42),Result)
  jpl_execute_action(executive_function_1,flp_ask_user([Please state your task/objective: ],_10),_18)
 
-[executive_function_1] 'Relevant Plans: '[{ @p__4[source(self),url("file:src/asl/executive_function.asl")] +_45[source(percept)] <- +_45[source(percept)] }]
-[executive_function_1] 'Generated Plan: '+flp_ask_user(['Please state your task/objective: '],_43) : true <- .print("x/1: ",flp_ask_user(['Please state your task/objective: '],_43)).
 query_agent_bindings(Agent, Host, Vars, Message, Results) :-
     query_agent(Agent, Host, Message, Result),
     findall(Vars,
@@ -132,20 +130,15 @@ query_agent_bindings(Agent, Host, Vars, Message, Results) :-
 
  [goals,[[flp_ask_user([Please state your task/objective: ],Finish executive function system)]]]
 JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Please state your task/objective: ', '[]'), 'Finish executive function system'), '[]'), '[]')
-  jpl_perceive(executive_function_1,Percepts,Result)
 Started call from Prolog
+  jpl_perceive(executive_function_1,Percepts,Result)
 XXXXX: <<<flp_ask_user('[|]'('Please state your task/objective: ', '[]'), 'Finish executive function system')>>>
 	executive_function_1 Result true
-
 Received call from Prolog
+
 Env Changed, Agents Informed
-[executive_function_1] 'Converting...'
-[executive_function_1] x/1: flp_ask_user(['Please state your task/objective: '],'Finish executive function system')
-[executive_function_1] 'Converted: 'flp_ask_user(['Please state your task/objective: '],'Finish executive function system')
-[executive_function_1] '.'
-[executive_function_1] Command Succeeded: flp_ask(['Please state your task/objective: '],'Finish executive function system')
-Agent executive_function_1 is doing flp_ask_user(['Is it an objective or a task: '],_50)
-  jpl_execute_action(executive_function_1,flp_ask_user(['Is it an objective or a task: '],_50),Result)
+Agent executive_function_1 is doing flp_ask_user(['Is it an objective or a task: '],_48)
+  jpl_execute_action(executive_function_1,flp_ask_user(['Is it an objective or a task: '],_48),Result)
  jpl_execute_action(executive_function_1,flp_ask_user([Is it an objective or a task: ],_3318),_3326)
 
 query_agent_bindings(Agent, Host, Vars, Message, Results) :-
@@ -169,16 +162,8 @@ Started call from Prolog
 XXXXX: <<<flp_ask_user('[|]'('Is it an objective or a task: ', '[]'), objective)>>>
 Received call from Prolog
 Env Changed, Agents Informed
-[executive_function_1] classify_entry(andrewDougherty,'Finish executive function system',Type)
-[executive_function_1] 'Relevant Plans: '[{ @p__4[source(self),url("file:src/asl/executive_function.asl")] +_52[source(percept)] <- +_52[source(percept)] }]
-[executive_function_1] 'Generated Plan: '+flp_ask_user(['Is it an objective or a task: '],_50) : true <- .print("x/1: ",flp_ask_user(['Is it an objective or a task: '],_50)).
-[executive_function_1] x/1: flp_ask_user(['Is it an objective or a task: '],objective)
-[executive_function_1] 'Converted: 'flp_ask_user(['Is it an objective or a task: '],objective)
-[executive_function_1] 'Converting...'
-[executive_function_1] '.'
-[executive_function_1] Command Succeeded: flp_ask(['Is it an objective or a task: '],objective)
-Agent executive_function_1 is doing flp_ask_user(['Is it currently obtainable: '],_56)
-  jpl_execute_action(executive_function_1,flp_ask_user(['Is it currently obtainable: '],_56),Result)
+Agent executive_function_1 is doing flp_ask_user(['Is it currently obtainable: '],_54)
+  jpl_execute_action(executive_function_1,flp_ask_user(['Is it currently obtainable: '],_54),Result)
  jpl_execute_action(executive_function_1,flp_ask_user([Is it currently obtainable: ],_3318),_3326)
 
 query_agent_bindings(Agent, Host, Vars, Message, Results) :-
@@ -196,21 +181,37 @@ query_agent_bindings(Agent, Host, Vars, Message, Results) :-
  [goals,[[flp_ask_user([Is it currently obtainable: ],no)]]]
   jpl_perceive(executive_function_1,Percepts,Result)
 JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Is it currently obtainable: ', '[]'), no), '[]'), '[]')
+Started call from Prolog
 	executive_function_1 Result true
 
-Started call from Prolog
 XXXXX: <<<flp_ask_user('[|]'('Is it currently obtainable: ', '[]'), no)>>>
 Received call from Prolog
 Env Changed, Agents Informed
-[executive_function_1] type(objective)
-[executive_function_1] add_entry(andrewDougherty,'Finish executive function system',objective)
-[executive_function_1] 'Relevant Plans: '[{ @p__4[source(self),url("file:src/asl/executive_function.asl")] +_58[source(percept)] <- +_58[source(percept)] }]
-[executive_function_1] 'Generated Plan: '+flp_ask_user(['Is it currently obtainable: '],_56) : true <- .print("x/1: ",flp_ask_user(['Is it currently obtainable: '],_56)).
-[executive_function_1] x/1: flp_ask_user(['Is it currently obtainable: '],no)
-[executive_function_1] 'Converted: 'flp_ask_user(['Is it currently obtainable: '],no)
+[executive_function_1] 'Relevant Plans: '[{ @p__4[source(self),url("file:src/asl/executive_function.asl")] +_44[source(percept)] <- +_44[source(percept)] }]
+[executive_function_1] 'Generated Plan: '+flp_ask_user(['Please state your task/objective: '],_42) : true <- .print("x/1: ",flp_ask_user(['Please state your task/objective: '],_42)).
+[executive_function_1] x/1: flp_ask_user(['Please state your task/objective: '],'Finish executive function system')
+[executive_function_1] 'Converting...'
+[executive_function_1] 'Converted: 'flp_ask_user(['Please state your task/objective: '],'Finish executive function system')
+[executive_function_1] Command Succeeded: flp_ask(['Please state your task/objective: '],'Finish executive function system')
+[executive_function_1] classify_entry(andrewDougherty,'Finish executive function system',Type)
+[executive_function_1] 'Relevant Plans: '[{ @p__4[source(self),url("file:src/asl/executive_function.asl")] +_50[source(percept)] <- +_50[source(percept)] }]
+[executive_function_1] 'Generated Plan: '+flp_ask_user(['Is it an objective or a task: '],_48) : true <- .print("x/1: ",flp_ask_user(['Is it an objective or a task: '],_48)).
+[executive_function_1] x/1: flp_ask_user(['Is it an objective or a task: '],objective)
+[executive_function_1] 'Converted: 'flp_ask_user(['Is it an objective or a task: '],objective)
 [executive_function_1] 'Converting...'
 [executive_function_1] '.'
+[executive_function_1] Command Succeeded: flp_ask(['Is it an objective or a task: '],objective)
+[executive_function_1] type(objective)
+[executive_function_1] add_entry(andrewDougherty,'Finish executive function system',objective)
+[executive_function_1] 'Relevant Plans: '[{ @p__4[source(self),url("file:src/asl/executive_function.asl")] +_56[source(percept)] <- +_56[source(percept)] }]
+[executive_function_1] 'Generated Plan: '+flp_ask_user(['Is it currently obtainable: '],_54) : true <- .print("x/1: ",flp_ask_user(['Is it currently obtainable: '],_54)).
+[executive_function_1] 'Converting...'
+[executive_function_1] x/1: flp_ask_user(['Is it currently obtainable: '],no)
+[executive_function_1] 'Converted: 'flp_ask_user(['Is it currently obtainable: '],no)
+[executive_function_1] '.'
 [executive_function_1] Command Succeeded: flp_ask(['Is it currently obtainable: '],no)
-[executive_function_1] 'Answer'no
+[executive_function_1] 'Answer: 'no
+[executive_function_1] Boo hoo!
+[executive_function_1] 'NOT Agent: 'andrewDougherty' has Objective'
 [executive_function_1] 'Entry: ''Finish executive function system''.  Type: 'objective
   C-c C-candrewdo@ai2:/var/lib/myfrdcsa/collaborative/git/jason$ 
