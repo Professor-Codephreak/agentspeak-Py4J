@@ -18,4 +18,4 @@ method(sys(CLICommand,Result),shell_command_to_string(CLICommand,Result)).
 method(chomp(Input,Output),normalize_space(atom(Output),Input)).
 method(cd(Dir1,Dir2),cd(Dir2)).
 method(flp_ask(Question,Answer),flp_ask_user(Question,Answer)).
-// method(flp_query(Question,Answer),flp_query(Question,Answer)).
+method(flp_query(Question,Answer),flp_query_flp(Question,Answer)).

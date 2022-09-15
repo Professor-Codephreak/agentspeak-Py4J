@@ -4,17 +4,8 @@
 // FIXME: Do we need this vvv ?  If we enable it, it does not generate
 // plans. if we disable it, then it might not input beliefs correctly
 
-+flp_ask_user('[|]'(Question,'[]'),Answer) <-
-	-flp_ask_user('[|]'(Question,'[]'),Answer);
-	+flp_ask_user([Question],Answer);
-	.print('Converted: ',flp_ask_user([Question],Answer)).
-
--flp_ask_user('[|]'(Question,'[]'),Answer)[source(percept)] <-
-	.print('Converting...').
-
 +Prolog[source(percept)] <-
  	+Prolog[source(self)].
-
 
 +?x(Term) <-
 	.concat('+',Term,Trigger);
@@ -48,6 +39,26 @@
 
 +query_agent_bindings(flp, localhost, _, flp_ask_user(Question, _), Results) <-
 	+flp_ask_user(Question,Results).
+
++flp_ask_user('[|]'(Question,'[]'),Answer) <-
+	-flp_ask_user('[|]'(Question,'[]'),Answer);
+	+flp_ask_user([Question],Answer);
+	.print('Converted: ',flp_ask_user([Question],Answer)).
+
+-flp_ask_user('[|]'(Question,'[]'),Answer)[source(percept)] <-
+	.print('Converting...').
+
+
++query_agent_bindings(flp, localhost, _, flp_query_flp(Query, _), Results) <-
+	+flp_query_flp(Query,Results).
+
++flp_query_flp('[|]'(Query,'[]'),Response) <-
+	-flp_query_flp('[|]'(Query,'[]'),Response);
+	+flp_query_flp([Query],Response);
+	.print('Converted: ',flp_query_flp([Query],Response)).
+
+-flp_query_flp('[|]'(Query,'[]'),Response)[source(percept)] <-
+	.print('Converting...').
 
 +!run6 <-
 	!initializeCommands;

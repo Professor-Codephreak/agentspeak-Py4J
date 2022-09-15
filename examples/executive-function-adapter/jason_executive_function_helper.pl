@@ -23,8 +23,6 @@ flp_ask_user(Question,TheAnswer) :-
 	Question = [FirstQuestion|_],
 	user:query_agent_bindings(flp, localhost, [Answer], flp_ask_user(FirstQuestion, Answer), [[TheAnswer]]).
 
-%% flp_query(Query,Result) :-
-%% 	free_variables(Query,Vars),
-%% 	user:query_agent_bindings(flp, localhost, , Query, Result).
-
-
+flp_query_flp(Query,Results) :-
+	Query = [FirstQuery|_],
+	user:query_agent_bindings(flp, localhost, [Result], flp_query_flp(FirstQuery,Result), [[Results]]).
