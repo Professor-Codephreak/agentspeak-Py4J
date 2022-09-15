@@ -1,12 +1,11 @@
-// questions
+// see also:
 
-// 1. how to convert between atoms and strings.
+//	/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function.pl
+//      /var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function.txt
 
-// 2. how to atomic_list_concat/2,3
-
-
-// 3. How to string comparison
-// A. Can do .substring(A,), and maybe and .substring(B,A)
+//      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/to.do
+//      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl
+//      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/executive_function.asl
 
 +!elicit_entry(Agent,Entry,Type) <-
 	!flp_ask(['Please state your task/objective: '],Entry);
@@ -38,8 +37,21 @@
 				      }.
 
 +currentlyObtainableForP(Agent,Objective) <-
-	.print('Agent: ',Agent,' has Objective').
+	.print('Agent: ',Agent,' has obtainable objective: ',Objective);
+	.print('Do not necessarily want to break down objective: ',Objective,' into subgoals').
 
 +~currentlyObtainableForP(Agent,Objective) <-
-	.print('NOT Agent: ',Agent,' has Objective').
+	.print('Agent: ',Agent,' has unobtainable objective: ',Objective);
+	!get_subgoals_for_objective(Agent,Objective,SubGoals).
+
++!get_subgoals_for_objective(Agent,Objective,Subgoals) <-
+	.print('Researching subgoals to achieve objective');
+	// ?hasObjective(Agent,Objective);
+	// !flp_query([hasSugoal(Objective,_Subgoal)],Subgoal).
+	.print('hi').
+
++!get_subtasks_for_task(Agent,Task,Tasks) <-
+	// ?hasObjective(Agent,Objective);
+	.print('hi').
+
 
