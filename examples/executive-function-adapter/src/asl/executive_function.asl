@@ -49,31 +49,13 @@
 +query_agent_bindings(flp, localhost, _, flp_ask_user(Question, _), Results) <-
 	+flp_ask_user(Question,Results).
 
-+!test(I) <-
-	.print('I: ',I);
-	!sys(pwd,Result);
-	.print('Result: ',Result);
-	!chomp(Result,Chomped);
-	.print('Chomped: ',Chomped);
-	if (I < 100) {
-		      .wait(200);
-		     !test(I + 1);
-        }.
-
--!test(_) <-
-	true.
-
-// !test(1).
-
-
 +!run6 <-
 	!initializeCommands;
 	.wait(1000);
 	!elicit_entry(andrewDougherty,Entry,Type);
 	.print('Entry: ',Entry,'.  Type: ',Type).
 
-!run6.
-
-
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/ef_agent.asl") }
+
+!run6.
