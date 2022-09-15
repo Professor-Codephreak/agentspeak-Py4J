@@ -7,6 +7,9 @@
 //      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl
 //      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/executive_function.asl
 
+//      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_helper.pl
+//      /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_wrapper.pl
+
 +!elicit_entry(Agent,Entry,Type) <-
 	!flp_ask(['Please state your task/objective: '],Entry);
 	.print(classify_entry(Agent,Entry,Type));

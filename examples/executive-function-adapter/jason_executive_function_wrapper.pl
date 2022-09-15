@@ -70,5 +70,5 @@ jpl_poll_messages(_Agent,Goals) :-
 	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true),
 	retractall(messageQueue(_)).
 
-flp(Vars,Term) :-
-	query_agent_bindings(flp,'localhost',Vars,Term,Results).
+%% flp(Vars,Term) :-
+%% 	query_agent_bindings(flp,'localhost',Vars,Term,Results).
