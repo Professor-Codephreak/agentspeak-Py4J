@@ -20,6 +20,7 @@
 	!add_entry(Agent,Entry,Type).
 
 +!classify_entry(Agent,Entry,Type) <-
+	/* !flp_ask(['Please review: ',Entry,'Is it an objective or a task: '],Type); */
 	!flp_ask(['Is it an objective or a task: '],Type);
 	.print(type(Type)).
 
@@ -52,14 +53,13 @@
 +!get_subgoals_for_objective(Agent,Objective,Subgoals) <-
 	.print('Researching subgoals to achieve objective');
 	!flp_query([hasSubgoal(Objective,_Subgoal)],Subgoals);
-	.print('Subgoal: ',Subgoals).
-
-/*  !convert_from_pengine_list_to_jason_list(Subgoals,List);
-    for (.member(hasSubgoal(_,Entry),List)) {
-    .print('Entry: ',Entry);
-    !classify_entry(Agent,Entry,Type);
-    }
-    .*/
+	.print('Subgoal: ',Subgoals);
+	!convert_from_pengine_list_to_jason_list(Subgoals,List);
+	for (.member(hasSubgoal(_,Entry),List)) {
+						 .print('Entry: ',Entry);
+						 /* !classify_entry(Agent,Entry,Type);*/
+						 }
+	.
 
 +!get_subtasks_for_task(Agent,Task,Tasks) <-
 	.print('hi').
