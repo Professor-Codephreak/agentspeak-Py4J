@@ -21,7 +21,6 @@
 
 +!classify_entry(Agent,Entry,Type) <-
 	!flp_ask(['Please review: ',Entry,'Is it an objective or a task: '],Type);
-	/* !flp_ask(['Is it an objective or a task: '],Type); */
 	.print(type(Type)).
 
 +!add_entry(Agent,Entry,objective) <-
@@ -31,7 +30,7 @@
 	+hasTask(Agent,Entry).
 
 +hasObjective(Agent,Objective) : not currentlyObtainableForP(Agent,Objective) & not ~currentlyObtainableForP(Agent,Objective) <-
-	!flp_ask(['Is it currently obtainable: '],Answer);
+	!flp_ask(['Consider this objective: ','Finish executive function system','. Is it currently obtainable for: ',Agent,'. yes or no?: '],Answer);
 	.print('Answer: ',Answer);
 	if (.substring(Answer,'yes')) {
 			      .print("Yeha!");
@@ -57,7 +56,7 @@
 	!convert_from_pengine_list_to_jason_list(Subgoals,List);
 	for (.member(hasSubgoal(_,Entry),List)) {
 						 .print('Entry: ',Entry);
-						 /* !classify_entry(Agent,Entry,Type);*/
+						 !classify_entry(Agent,Entry,Type);
 						 }
 	.
 

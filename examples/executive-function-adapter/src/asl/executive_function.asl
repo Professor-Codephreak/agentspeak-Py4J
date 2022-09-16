@@ -78,8 +78,7 @@
 +!run6 <-
 	!initializeCommands;
 	.wait(1000);
-	!elicit_entry(andrewDougherty,Entry,Type);
-	.print('Entry: ',Entry,'.  Type: ',Type).
+	!elicit_entry(andrewDougherty,Entry,Type).
 
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/ef_agent.asl") }
