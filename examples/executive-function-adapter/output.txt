@@ -1,4 +1,4 @@
-andrewdo@ai2:/var/lib/myfrdcsa/collaborative/git/jason$ ./run-executive-function.sh 
+andrewdo@ai2:/var/lib/myfrdcsa/collaborative/git/jason$ ./run-executive-function.sh
 Jade jar is not properly set!
 Value is /var/lib/myfrdcsa/collaborative/git/jason/build/libs/JadeJar
 Jade jar is not properly set!
@@ -15,9 +15,9 @@ compile:
 run:
 Running project executivefunctionadapter
 Prolog-Loading-include: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/shell-utils.pl
+Prolog-Loading-include: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/regex.pl
 Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:24:
-	Redefined static procedure view/1Prolog-Loading-include: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/regex.pl
-
+	Redefined static procedure view/1
 	Previously defined at /var/lib/myfrdcsa/codebases/minor/strads-frdcsa/attempts/9/util.pl:24
 Warning: /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:137:
 	Singleton variables: [Project]
@@ -80,7 +80,6 @@ Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-a
 	Previously defined at /var/lib/myfrdcsa/codebases/minor/free-life-planner/lib/util/util.pl:156
 ERROR: /var/lib/myfrdcsa/codebases/minor/formalog-pengines/client-server/server/larkc_api.pl:19:
 	No permission to declare safe_goal `system:cl_eval(_4824,_4826)'
-Jason Http Server running on http://127.0.1.1:3272
 Warning: /var/lib/myfrdcsa/codebases/minor/formalog-pengines/attempts/pengines/1/scripts/formalog_pengines_call.pl:6:
 	Singleton variables: [End]
 Warning: /var/lib/myfrdcsa/codebases/minor/formalog-pengines/attempts/pengines/1/scripts/formalog_pengines_call.pl:66:
@@ -89,6 +88,7 @@ Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-a
 	Goal (directive) failed: user:start_agent(jasonExecutiveFunction)
 Warning: /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_wrapper.pl:49:
 	Singleton variables: [Agent]
+Jason Http Server running on http://127.0.1.1:3272
 [executive_function_1] 'Plan: '+!pwd(Dir) <- ?x(currentDirectory(Dir)); .print("Command Succeeded: ",pwd(Dir)).
 
 [executive_function_1] 'Fail Event: '-!pwd(Dir) <- .print("Command Failed: ",pwd(Dir)).
@@ -132,18 +132,18 @@ query_agent_bindings(Agent, Host, Vars, Message, Results) :-
  [queueMessageToJason([flp_ask_user([Please state your task/objective: ],Finish executive function system)])]
  jpl_execute_action(executive_function_1,flp_ask_user([Please state your task/objective: ],Finish executive function system),true)
 
- [goals,[[flp_ask_user([Please state your task/objective: ],Finish executive function system)]]]
-JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Please state your task/objective: ', '[]'), 'Finish executive function system'), '[]'), '[]')
   jpl_perceive(executive_function_1,Percepts,Result)
-Started call from Prolog
 	executive_function_1 Result true
 
+ [goals,[[flp_ask_user([Please state your task/objective: ],Finish executive function system)]]]
+JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Please state your task/objective: ', '[]'), 'Finish executive function system'), '[]'), '[]')
+Started call from Prolog
 XXXXX: <<<flp_ask_user('[|]'('Please state your task/objective: ', '[]'), 'Finish executive function system')>>>
 Received call from Prolog
 Env Changed, Agents Informed
-Agent executive_function_1 is doing flp_ask_user(['Is it an objective or a task: '],_59)
-  jpl_execute_action(executive_function_1,flp_ask_user(['Is it an objective or a task: '],_59),Result)
- jpl_execute_action(executive_function_1,flp_ask_user([Is it an objective or a task: ],_3318),_3326)
+Agent executive_function_1 is doing flp_ask_user(['Please review: ','Finish executive function system','Is it an objective or a task: '],_59)
+  jpl_execute_action(executive_function_1,flp_ask_user(['Please review: ','Finish executive function system','Is it an objective or a task: '],_59),Result)
+ jpl_execute_action(executive_function_1,flp_ask_user([Please review: ,Finish executive function system,Is it an objective or a task: ],_22),_30)
 
 query_agent_bindings(Agent, Host, Vars, Message, Results) :-
     query_agent(Agent, Host, Message, Result),
@@ -163,22 +163,22 @@ query_agent_bindings(Agent, Host, Vars, Message, Results) :-
 [executive_function_1] Command Succeeded: flp_ask(['Please state your task/objective: '],'Finish executive function system')
 [executive_function_1] classify_entry(andrewDougherty,'Finish executive function system',Type)
 [executive_function_1] 'Relevant Plans: '[{ @p__2[source(self),url("file:src/asl/executive_function.asl")] +_61[source(percept)] <- +_61[source(percept)] }]
-[executive_function_1] 'Generated Plan: '+flp_ask_user(['Is it an objective or a task: '],_59) : true <- .print("x/1: ",flp_ask_user(['Is it an objective or a task: '],_59)).
- [queueMessageToJason([flp_ask_user([Is it an objective or a task: ],objective)])]
- jpl_execute_action(executive_function_1,flp_ask_user([Is it an objective or a task: ],objective),true)
+[executive_function_1] 'Generated Plan: '+flp_ask_user(['Please review: ','Finish executive function system','Is it an objective or a task: '],_59) : true <- .print("x/1: ",flp_ask_user(['Please review: ','Finish executive function system','Is it an objective or a task: '],_59)).
+ [queueMessageToJason([flp_ask_user([Please review: ,Finish executive function system,Is it an objective or a task: ],objective)])]
+ jpl_execute_action(executive_function_1,flp_ask_user([Please review: ,Finish executive function system,Is it an objective or a task: ],objective),true)
 
- [goals,[[flp_ask_user([Is it an objective or a task: ],objective)]]]
-JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Is it an objective or a task: ', '[]'), objective), '[]'), '[]')
+ [goals,[[flp_ask_user([Please review: ,Finish executive function system,Is it an objective or a task: ],objective)]]]
   jpl_perceive(executive_function_1,Percepts,Result)
-Started call from Prolog
-XXXXX: <<<flp_ask_user('[|]'('Is it an objective or a task: ', '[]'), objective)>>>
+JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Please review: ', '[|]'('Finish executive function system', '[|]'('Is it an objective or a task: ', '[]'))), objective), '[]'), '[]')
 	executive_function_1 Result true
+Started call from Prolog
 
+XXXXX: <<<flp_ask_user('[|]'('Please review: ', '[|]'('Finish executive function system', '[|]'('Is it an objective or a task: ', '[]'))), objective)>>>
 Received call from Prolog
 Env Changed, Agents Informed
-Agent executive_function_1 is doing flp_ask_user(['Is it currently obtainable: '],_67)
-  jpl_execute_action(executive_function_1,flp_ask_user(['Is it currently obtainable: '],_67),Result)
- jpl_execute_action(executive_function_1,flp_ask_user([Is it currently obtainable: ],_3318),_3326)
+Agent executive_function_1 is doing flp_ask_user(['Is it currently obtainable: '],_69)
+  jpl_execute_action(executive_function_1,flp_ask_user(['Is it currently obtainable: '],_69),Result)
+ jpl_execute_action(executive_function_1,flp_ask_user([Is it currently obtainable: ],_10),_18)
 
 query_agent_bindings(Agent, Host, Vars, Message, Results) :-
     query_agent(Agent, Host, Message, Result),
@@ -189,44 +189,44 @@ query_agent_bindings(Agent, Host, Vars, Message, Results) :-
             Results).
 
 [location,'http://localhost:9881']
-[executive_function_1] [pengineList,'[|]'('Is it an objective or a task: ','[]')]
+[executive_function_1] [pengineList,'[|]'('Please review: ','[|]'('Finish executive function system','[|]'('Is it an objective or a task: ','[]')))]
 [executive_function_1] 'Converting...'
-[executive_function_1] [jasonList,['Is it an objective or a task: ']]
-[executive_function_1] x/1: flp_ask_user(['Is it an objective or a task: '],objective)
-[executive_function_1] 'Converted: 'flp_ask_user(['Is it an objective or a task: '],objective)
+[executive_function_1] [jasonList,['Please review: ','Finish executive function system','Is it an objective or a task: ']]
+[executive_function_1] x/1: flp_ask_user(['Please review: ','Finish executive function system','Is it an objective or a task: '],objective)
+[executive_function_1] 'Converted: 'flp_ask_user(['Please review: ','Finish executive function system','Is it an objective or a task: '],objective)
 [executive_function_1] '.'
-[executive_function_1] Command Succeeded: flp_ask(['Is it an objective or a task: '],objective)
+[executive_function_1] Command Succeeded: flp_ask(['Please review: ','Finish executive function system','Is it an objective or a task: '],objective)
 [executive_function_1] type(objective)
 [executive_function_1] add_entry(andrewDougherty,'Finish executive function system',objective)
-[executive_function_1] 'Relevant Plans: '[{ @p__2[source(self),url("file:src/asl/executive_function.asl")] +_69[source(percept)] <- +_69[source(percept)] }]
-[executive_function_1] 'Generated Plan: '+flp_ask_user(['Is it currently obtainable: '],_67) : true <- .print("x/1: ",flp_ask_user(['Is it currently obtainable: '],_67)).
+[executive_function_1] 'Relevant Plans: '[{ @p__2[source(self),url("file:src/asl/executive_function.asl")] +_71[source(percept)] <- +_71[source(percept)] }]
+[executive_function_1] 'Generated Plan: '+flp_ask_user(['Is it currently obtainable: '],_69) : true <- .print("x/1: ",flp_ask_user(['Is it currently obtainable: '],_69)).
  [queueMessageToJason([flp_ask_user([Is it currently obtainable: ],no)])]
  jpl_execute_action(executive_function_1,flp_ask_user([Is it currently obtainable: ],no),true)
 
-  jpl_perceive(executive_function_1,Percepts,Result)
-	executive_function_1 Result true
-
  [goals,[[flp_ask_user([Is it currently obtainable: ],no)]]]
+  jpl_perceive(executive_function_1,Percepts,Result)
 JPL_POLL RESULT: '[|]'('[|]'(flp_ask_user('[|]'('Is it currently obtainable: ', '[]'), no), '[]'), '[]')
+	executive_function_1 Result true
 Started call from Prolog
+
 XXXXX: <<<flp_ask_user('[|]'('Is it currently obtainable: ', '[]'), no)>>>
 Received call from Prolog
 Env Changed, Agents Informed
-Agent executive_function_1 is doing flp_query_flp([hasSubgoal('Finish executive function system',_77)],_78)
-  jpl_execute_action(executive_function_1,flp_query_flp([hasSubgoal('Finish executive function system',_77)],_78),Result)
- jpl_execute_action(executive_function_1,flp_query_flp([hasSubgoal(Finish executive function system,_3312)],_3324),_3332)
+Agent executive_function_1 is doing flp_query_flp(hasSubgoal('Finish executive function system',_79),_80)
+  jpl_execute_action(executive_function_1,flp_query_flp(hasSubgoal('Finish executive function system',_79),_80),Result)
+ jpl_execute_action(executive_function_1,flp_query_flp(hasSubgoal(Finish executive function system,_4),_10),_18)
 
 [location,'http://localhost:9881']
- [queueMessageToJason([flp_query_flp([hasSubgoal(Finish executive function system,_3312)],[hasSubgoal(Finish executive function system,Write down executive function skills),hasSubgoal(Finish executive function system,Iterate over list of executive function skills, and implement)])])]
- jpl_execute_action(executive_function_1,flp_query_flp([hasSubgoal(Finish executive function system,_3312)],[hasSubgoal(Finish executive function system,Write down executive function skills),hasSubgoal(Finish executive function system,Iterate over list of executive function skills, and implement)]),true)
+ [queueMessageToJason([flp_query_flp(hasSubgoal(Finish executive function system,_4),[hasSubgoal(Finish executive function system,Write down executive function skills),hasSubgoal(Finish executive function system,Iterate over list of executive function skills, and implement)])])]
+ jpl_execute_action(executive_function_1,flp_query_flp(hasSubgoal(Finish executive function system,_4),[hasSubgoal(Finish executive function system,Write down executive function skills),hasSubgoal(Finish executive function system,Iterate over list of executive function skills, and implement)]),true)
 
- [goals,[[flp_query_flp([hasSubgoal(Finish executive function system,_60)],[hasSubgoal(Finish executive function system,Write down executive function skills),hasSubgoal(Finish executive function system,Iterate over list of executive function skills, and implement)])]]]
   jpl_perceive(executive_function_1,Percepts,Result)
+ [goals,[[flp_query_flp(hasSubgoal(Finish executive function system,_54),[hasSubgoal(Finish executive function system,Write down executive function skills),hasSubgoal(Finish executive function system,Iterate over list of executive function skills, and implement)])]]]
 	executive_function_1 Result true
 
-JPL_POLL RESULT: '[|]'('[|]'(flp_query_flp('[|]'(hasSubgoal('Finish executive function system', _39070), '[]'), '[|]'(hasSubgoal('Finish executive function system', 'Write down executive function skills'), '[|]'(hasSubgoal('Finish executive function system', 'Iterate over list of executive function skills, and implement'), '[]'))), '[]'), '[]')
+JPL_POLL RESULT: '[|]'('[|]'(flp_query_flp(hasSubgoal('Finish executive function system', _63870), '[|]'(hasSubgoal('Finish executive function system', 'Write down executive function skills'), '[|]'(hasSubgoal('Finish executive function system', 'Iterate over list of executive function skills, and implement'), '[]'))), '[]'), '[]')
 Started call from Prolog
-XXXXX: <<<flp_query_flp('[|]'(hasSubgoal('Finish executive function system', _39070), '[]'), '[|]'(hasSubgoal('Finish executive function system', 'Write down executive function skills'), '[|]'(hasSubgoal('Finish executive function system', 'Iterate over list of executive function skills, and implement'), '[]')))>>>
+XXXXX: <<<flp_query_flp(hasSubgoal('Finish executive function system', _63870), '[|]'(hasSubgoal('Finish executive function system', 'Write down executive function skills'), '[|]'(hasSubgoal('Finish executive function system', 'Iterate over list of executive function skills, and implement'), '[]')))>>>
 Received call from Prolog
 Env Changed, Agents Informed
 [executive_function_1] [pengineList,'[|]'('Is it currently obtainable: ','[]')]
@@ -240,15 +240,11 @@ Env Changed, Agents Informed
 [executive_function_1] Boo hoo!
 [executive_function_1] 'Agent: 'andrewDougherty' has currently unobtainable objective: ''Finish executive function system'
 [executive_function_1] 'Researching subgoals to achieve objective'
-[executive_function_1] 'Relevant Plans: '[{ @p__2[source(self),url("file:src/asl/executive_function.asl")] +_80[source(percept)] <- +_80[source(percept)] }]
-[executive_function_1] 'Generated Plan: '+flp_query_flp([hasSubgoal('Finish executive function system',_77)],_78) : true <- .print("x/1: ",flp_query_flp([hasSubgoal('Finish executive function system',_77)],_78)).
-[executive_function_1] [pengineList,'[|]'(hasSubgoal('Finish executive function system',_83),'[]')]
-[executive_function_1] 'Converting...'
-[executive_function_1] [jasonList,[hasSubgoal('Finish executive function system',_84)]]
-[executive_function_1] x/1: flp_query_flp([hasSubgoal('Finish executive function system',_77)],'[|]'(hasSubgoal('Finish executive function system','Write down executive function skills'),'[|]'(hasSubgoal('Finish executive function system','Iterate over list of executive function skills, and implement'),'[]')))
-[executive_function_1] 'Converted: 'flp_query_flp([hasSubgoal('Finish executive function system',_84)],'[|]'(hasSubgoal('Finish executive function system','Write down executive function skills'),'[|]'(hasSubgoal('Finish executive function system','Iterate over list of executive function skills, and implement'),'[]')))
+[executive_function_1] 'Relevant Plans: '[{ @p__2[source(self),url("file:src/asl/executive_function.asl")] +_82[source(percept)] <- +_82[source(percept)] }]
+[executive_function_1] 'Generated Plan: '+flp_query_flp(hasSubgoal('Finish executive function system',_79),_80) : true <- .print("x/1: ",flp_query_flp(hasSubgoal('Finish executive function system',_79),_80)).
+[executive_function_1] x/1: flp_query_flp(hasSubgoal('Finish executive function system',_79),'[|]'(hasSubgoal('Finish executive function system','Write down executive function skills'),'[|]'(hasSubgoal('Finish executive function system','Iterate over list of executive function skills, and implement'),'[]')))
 [executive_function_1] '.'
-[executive_function_1] Command Succeeded: flp_query([hasSubgoal('Finish executive function system',_75)],'[|]'(hasSubgoal('Finish executive function system','Write down executive function skills'),'[|]'(hasSubgoal('Finish executive function system','Iterate over list of executive function skills, and implement'),'[]')))
+[executive_function_1] Command Succeeded: flp_query(hasSubgoal('Finish executive function system',_77),'[|]'(hasSubgoal('Finish executive function system','Write down executive function skills'),'[|]'(hasSubgoal('Finish executive function system','Iterate over list of executive function skills, and implement'),'[]')))
 [executive_function_1] 'Subgoal: ''[|]'(hasSubgoal('Finish executive function system','Write down executive function skills'),'[|]'(hasSubgoal('Finish executive function system','Iterate over list of executive function skills, and implement'),'[]'))
 [executive_function_1] 'Entry: ''Write down executive function skills'
 [executive_function_1] 'Entry: ''Iterate over list of executive function skills, and implement'
