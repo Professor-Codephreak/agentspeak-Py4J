@@ -20,9 +20,7 @@ currentDirectory(Dir) :-
 
 flp_ask_user(Question,TheAnswer) :-
 	listing(query_agent_bindings),
-	Question = [FirstQuestion|_],
-	user:query_agent_bindings(flp, localhost, [Answer], flp_ask_user(FirstQuestion, Answer), [[TheAnswer]]).
+	user:query_agent_bindings(flp, localhost, [Answer], flp_ask_user(Question, Answer), [[TheAnswer]]).
 
 flp_query_flp(Query,Results) :-
-	Query = [FirstQuery|_],
-	user:query_agent_bindings(flp, localhost, [Result], flp_query_flp(FirstQuery,Result), [[Results]]).
+	user:query_agent_bindings(flp, localhost, [Result], flp_query_flp(Query,Result), [[Results]]).
