@@ -27,10 +27,11 @@
 	+hasObjective(Agent,Entry).
 
 +!add_entry(Agent,Entry,task) <-
+	.print(hasTask(Agent,Entry));
 	+hasTask(Agent,Entry).
 
 +hasObjective(Agent,Objective) : not currentlyObtainableForP(Agent,Objective) & not ~currentlyObtainableForP(Agent,Objective) <-
-	!flp_ask(['Consider this objective: ','Finish executive function system','. Is it currently obtainable for: ',Agent,'. yes or no?: '],Answer);
+	!flp_ask(['Consider this objective: ',Objective,'. Is it currently obtainable for: ',Agent,'. yes or no?: '],Answer);
 	.print('Answer: ',Answer);
 	if (.substring(Answer,'yes')) {
 			      .print("Yeha!");
@@ -57,8 +58,21 @@
 	for (.member(hasSubgoal(_,Entry),List)) {
 						 .print('Entry: ',Entry);
 						 !classify_entry(Agent,Entry,Type);
+						 !add_entry(Agent,Entry,Type);
 						 }
 	.
 
-+!get_subtasks_for_task(Agent,Task,Tasks) <-
-	.print('hi').
++hasTask(Agent,Task) <-
+	!get_subtasks_for_task(Agent,Task,Subtasks).
+
++!get_subtasks_for_task(Agent,Task,Subtasks) <-
+	.print('Researching subtasks to execute task',Task);
+	!flp_query(hasSubtask(Task,_Subtask),Subtasks);
+	.print('Subtask: ',Subtasks);
+	!convert_from_pengine_list_to_jason_list(Subtasks,List);
+	for (.member(hasSubtask(_,Entry),List)) {
+						 .print('Entry: ',Entry);
+						 !classify_entry(Agent,Entry,Type);
+						 !add_entry(Agent,Entry,Type);
+						 }
+	.
