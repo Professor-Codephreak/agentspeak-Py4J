@@ -53,7 +53,6 @@
 	.print('Researching subgoals to achieve objective');
 	!flp_query([hasSubgoal(Objective,_Subgoal)],Subgoals);
 	.print('Subgoal: ',Subgoals).
-
 /*  !convert_from_pengine_list_to_jason_list(Subgoals,List);
     for (.member(hasSubgoal(_,Entry),List)) {
     .print('Entry: ',Entry);

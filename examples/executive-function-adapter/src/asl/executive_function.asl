@@ -40,24 +40,31 @@
 +query_agent_bindings(flp, localhost, _, flp_ask_user(Question, _), Results) <-
 	+flp_ask_user(Question,Results).
 
-+flp_ask_user('[|]'(Question,'[]'),Answer) <-
-	-flp_ask_user('[|]'(Question,'[]'),Answer);
-	+flp_ask_user([Question],Answer);
-	.print('Converted: ',flp_ask_user([Question],Answer)).
++flp_ask_user('[|]'(A,B),Answer) <-
+	PengineList = '[|]'(A,B);
+	.print([pengineList,PengineList]);
+	!convert_from_pengine_list_to_jason_list(PengineList,JasonList);
+	.print([jasonList,JasonList]);
+	-flp_ask_user(PengineList,Answer);
+	+flp_ask_user(JasonList,Answer);
+	.print('Converted: ',flp_ask_user(JasonList,Answer)).
 
--flp_ask_user('[|]'(Question,'[]'),Answer)[source(percept)] <-
+-flp_ask_user('[|]'(_,_),Answer)[source(percept)] <-
 	.print('Converting...').
-
 
 +query_agent_bindings(flp, localhost, _, flp_query_flp(Query, _), Results) <-
 	+flp_query_flp(Query,Results).
 
-+flp_query_flp('[|]'(Query,'[]'),Response) <-
-	-flp_query_flp('[|]'(Query,'[]'),Response);
-	+flp_query_flp([Query],Response);
-	.print('Converted: ',flp_query_flp([Query],Response)).
++flp_query_flp('[|]'(A,B),Answer) <-
+	PengineList = '[|]'(A,B);
+	.print([pengineList,PengineList]);
+	!convert_from_pengine_list_to_jason_list(PengineList,JasonList);
+	.print([jasonList,JasonList]);
+	-flp_query_flp(PengineList,Answer);
+	+flp_query_flp(JasonList,Answer);
+	.print('Converted: ',flp_query_flp(JasonList,Answer)).
 
--flp_query_flp('[|]'(Query,'[]'),Response)[source(percept)] <-
+-flp_query_flp('[|]'(_,_),Answer)[source(percept)] <-
 	.print('Converting...').
 
 +!convert_from_pengine_list_to_jason_list('[]',Output) <-
