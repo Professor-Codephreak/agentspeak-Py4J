@@ -4,7 +4,7 @@
 /var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function.pl
 /var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function_domain__executive_function.pl
 /var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function_domain__become_counselor.pl
-/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function.txt
+/var/lib/myfrdcsa/codebases/minor/executive-function/data-git/executive_function.txt
 
 /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/to.do
 /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl
@@ -22,7 +22,7 @@
 	!add_entry(Agent,Entry,Type).
 
 +!classify_entry(Agent,Entry,Type) <-
-	!flp_ask(['Please review: ',Entry,'Is it an goal or a action: '],Type);
+	!flp_ask(['Please review: ',Entry,'Is it an goal or an action: '],Type);
 	.print(type(Type)).
 
 +!add_entry(Agent,Entry,goal) <-
@@ -42,7 +42,8 @@
 	if (.substring(Answer,'no')) {
 				      .print("Boo hoo!");
 				      +~currentlyObtainableForP(Agent,Goal);
-				      }.
+				      }
+	.
 
 +currentlyObtainableForP(Agent,Goal) <-
 	.print('Agent: ',Agent,' has currently obtainable goal: ',Goal);
@@ -50,6 +51,7 @@
 
 +~currentlyObtainableForP(Agent,Goal) <-
 	.print('Agent: ',Agent,' has currently unobtainable goal: ',Goal);
+	!does_agent_have_the_necessary_resources_to_accomplish_goal(Agent,Goal);
 	!get_subgoals_for_goal(Agent,Goal,SubGoals).
 
 +!get_subgoals_for_goal(Agent,Goal,Subgoals) <-
@@ -58,6 +60,7 @@
 	.print('Subgoal: ',Subgoals);
 	!convert_from_pengine_list_to_jason_list(Subgoals,List);
 	for (.member(hasSubgoal(_,Entry),List)) {
+						 // FIXME: do not need to classify this, we already know it is a goal
 						 .print('Entry: ',Entry);
 						 !classify_entry(Agent,Entry,Type);
 						 !add_entry(Agent,Entry,Type);
@@ -73,14 +76,14 @@
 	.print('Subaction: ',Subactions);
 	!convert_from_pengine_list_to_jason_list(Subactions,List);
 	for (.member(hasSubaction(_,Entry),List)) {
+						 // FIXME: do not need to classify this, we already know it is an action
 						 .print('Entry: ',Entry);
 						 !classify_entry(Agent,Entry,Type);
 						 !add_entry(Agent,Entry,Type);
 						 }
 	.
 
-/*
-  +!does_agent_have_the_necessary_resources_to_accomplish_goal(Agent,Goal) <-
++!does_agent_have_the_necessary_resources_to_accomplish_goal(Agent,Goal) <-
  	!flp_ask(['Does agent ',Agent,' have the necessary resources to accomplish: ',Goal],Answer);
  	if (.substring(Answer,'yes')) {
  				       .print("Yeha!");
@@ -89,12 +92,17 @@
  				       };
  	if (.substring(Answer,'no')) {
  				      .print("Boo hoo!");
- 				      !identify_resources_needed(Agent,Goal,Resources);
+				      !identify_necessary_resources(Agent,Goal,ActionSteps);
+				      .print(identify_necessary_resources(Agent,Goal,ActionSteps));
  				      };
  	.
 
- +!identify_action_steps(Agent,Goal,ActionSteps) <-
++!identify_action_steps(Agent,Goal,ActionSteps) <-
  	.print('Identifying action steps for goal: ',Goal);
  	!flp_query(hasActionSteps(Agent,Goal,_ActionSteps),ActionSteps);
  	.print('Action Steps: ',ActionSteps).
-*/
+
++!identify_necessary_resources(Agent,Goal,Resources) <-
+ 	.print('Identifying necessary resources for goal: ',Goal);
+ 	!flp_query(hasNecessaryResources(Agent,Goal,_Resources),Resources);
+ 	.print('Necessary Resources: ',Resources).
