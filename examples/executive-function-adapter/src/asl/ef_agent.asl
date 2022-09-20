@@ -2,6 +2,8 @@
 /* see also:
 
 /var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function.pl
+/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function_domain__executive_function.pl
+/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function_domain__become_counselor.pl
 /var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function.txt
 
 /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/to.do
@@ -76,3 +78,21 @@
 						 !add_entry(Agent,Entry,Type);
 						 }
 	.
+
++!does_agent_have_the_necessary_resources_to_accomplish_objective(Agent,Objective) <-
+	!flp_ask(['Does agent ',Agent,' have the necessary resources to accomplish: ',Objective],Answer);
+	if (.substring(Answer,'yes')) {
+				       .print("Yeha!");
+				       !identify_action_steps(Agent,Objective,ActionSteps);
+				       .print(identify_action_steps(Agent,Objective,ActionSteps));
+				       };
+	if (.substring(Answer,'no')) {
+				      .print("Boo hoo!");
+				      !identify_resources_needed(Agent,Objective,Resources);
+				      };
+	.
+
++!identify_action_steps(Agent,Objective,ActionSteps) <-
+	.print('Identifying action steps for objective: ',Objective);
+	!flp_query(hasActionSteps(Agent,Objective,_ActionSteps),ActionSteps);
+	.print('Action Steps: ',ActionSteps).
