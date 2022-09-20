@@ -15,46 +15,46 @@
 */
 	
 +!elicit_entry(Agent,Entry,Type) <-
-	!flp_ask(['Please state your task/objective: '],Entry);
+	!flp_ask(['Please state your action/goal: '],Entry);
 	.print(classify_entry(Agent,Entry,Type));
 	!classify_entry(Agent,Entry,Type);
 	.print(add_entry(Agent,Entry,Type));
 	!add_entry(Agent,Entry,Type).
 
 +!classify_entry(Agent,Entry,Type) <-
-	!flp_ask(['Please review: ',Entry,'Is it an objective or a task: '],Type);
+	!flp_ask(['Please review: ',Entry,'Is it an goal or a action: '],Type);
 	.print(type(Type)).
 
-+!add_entry(Agent,Entry,objective) <-
-	+hasObjective(Agent,Entry).
++!add_entry(Agent,Entry,goal) <-
+	+hasGoal(Agent,Entry).
 
-+!add_entry(Agent,Entry,task) <-
-	.print(hasTask(Agent,Entry));
-	+hasTask(Agent,Entry).
++!add_entry(Agent,Entry,action) <-
+	.print(hasAction(Agent,Entry));
+	+hasAction(Agent,Entry).
 
-+hasObjective(Agent,Objective) : not currentlyObtainableForP(Agent,Objective) & not ~currentlyObtainableForP(Agent,Objective) <-
-	!flp_ask(['Consider this objective: ',Objective,'. Is it currently obtainable for: ',Agent,'. yes or no?: '],Answer);
++hasGoal(Agent,Goal) : not currentlyObtainableForP(Agent,Goal) & not ~currentlyObtainableForP(Agent,Goal) <-
+	!flp_ask(['Consider this goal: ',Goal,'. Is it currently obtainable for: ',Agent,'. yes or no?: '],Answer);
 	.print('Answer: ',Answer);
 	if (.substring(Answer,'yes')) {
 			      .print("Yeha!");
-			      +currentlyObtainableForP(Agent,Objective);
+			      +currentlyObtainableForP(Agent,Goal);
 			      };
 	if (.substring(Answer,'no')) {
 				      .print("Boo hoo!");
-				      +~currentlyObtainableForP(Agent,Objective);
+				      +~currentlyObtainableForP(Agent,Goal);
 				      }.
 
-+currentlyObtainableForP(Agent,Objective) <-
-	.print('Agent: ',Agent,' has currently obtainable objective: ',Objective);
-	.print('Do not necessarily want to break down objective: ',Objective,' into subgoals').
++currentlyObtainableForP(Agent,Goal) <-
+	.print('Agent: ',Agent,' has currently obtainable goal: ',Goal);
+	.print('Do not necessarily want to break down goal: ',Goal,' into subgoals').
 
-+~currentlyObtainableForP(Agent,Objective) <-
-	.print('Agent: ',Agent,' has currently unobtainable objective: ',Objective);
-	!get_subgoals_for_objective(Agent,Objective,SubGoals).
++~currentlyObtainableForP(Agent,Goal) <-
+	.print('Agent: ',Agent,' has currently unobtainable goal: ',Goal);
+	!get_subgoals_for_goal(Agent,Goal,SubGoals).
 
-+!get_subgoals_for_objective(Agent,Objective,Subgoals) <-
-	.print('Researching subgoals to achieve objective');
-	!flp_query(hasSubgoal(Objective,_Subgoal),Subgoals);
++!get_subgoals_for_goal(Agent,Goal,Subgoals) <-
+	.print('Researching subgoals to achieve goal');
+	!flp_query(hasSubgoal(Goal,_Subgoal),Subgoals);
 	.print('Subgoal: ',Subgoals);
 	!convert_from_pengine_list_to_jason_list(Subgoals,List);
 	for (.member(hasSubgoal(_,Entry),List)) {
@@ -64,35 +64,37 @@
 						 }
 	.
 
-+hasTask(Agent,Task) <-
-	!get_subtasks_for_task(Agent,Task,Subtasks).
++hasAction(Agent,Action) <-
+	!get_subactions_for_action(Agent,Action,Subactions).
 
-+!get_subtasks_for_task(Agent,Task,Subtasks) <-
-	.print('Researching subtasks to execute task',Task);
-	!flp_query(hasSubtask(Task,_Subtask),Subtasks);
-	.print('Subtask: ',Subtasks);
-	!convert_from_pengine_list_to_jason_list(Subtasks,List);
-	for (.member(hasSubtask(_,Entry),List)) {
++!get_subactions_for_action(Agent,Action,Subactions) <-
+	.print('Researching subactions to execute action',Action);
+	!flp_query(hasSubaction(Action,_Subaction),Subactions);
+	.print('Subaction: ',Subactions);
+	!convert_from_pengine_list_to_jason_list(Subactions,List);
+	for (.member(hasSubaction(_,Entry),List)) {
 						 .print('Entry: ',Entry);
 						 !classify_entry(Agent,Entry,Type);
 						 !add_entry(Agent,Entry,Type);
 						 }
 	.
 
-+!does_agent_have_the_necessary_resources_to_accomplish_objective(Agent,Objective) <-
-	!flp_ask(['Does agent ',Agent,' have the necessary resources to accomplish: ',Objective],Answer);
-	if (.substring(Answer,'yes')) {
-				       .print("Yeha!");
-				       !identify_action_steps(Agent,Objective,ActionSteps);
-				       .print(identify_action_steps(Agent,Objective,ActionSteps));
-				       };
-	if (.substring(Answer,'no')) {
-				      .print("Boo hoo!");
-				      !identify_resources_needed(Agent,Objective,Resources);
-				      };
-	.
+/*
+  +!does_agent_have_the_necessary_resources_to_accomplish_goal(Agent,Goal) <-
+ 	!flp_ask(['Does agent ',Agent,' have the necessary resources to accomplish: ',Goal],Answer);
+ 	if (.substring(Answer,'yes')) {
+ 				       .print("Yeha!");
+ 				       !identify_action_steps(Agent,Goal,ActionSteps);
+ 				       .print(identify_action_steps(Agent,Goal,ActionSteps));
+ 				       };
+ 	if (.substring(Answer,'no')) {
+ 				      .print("Boo hoo!");
+ 				      !identify_resources_needed(Agent,Goal,Resources);
+ 				      };
+ 	.
 
-+!identify_action_steps(Agent,Objective,ActionSteps) <-
-	.print('Identifying action steps for objective: ',Objective);
-	!flp_query(hasActionSteps(Agent,Objective,_ActionSteps),ActionSteps);
-	.print('Action Steps: ',ActionSteps).
+ +!identify_action_steps(Agent,Goal,ActionSteps) <-
+ 	.print('Identifying action steps for goal: ',Goal);
+ 	!flp_query(hasActionSteps(Agent,Goal,_ActionSteps),ActionSteps);
+ 	.print('Action Steps: ',ActionSteps).
+*/
