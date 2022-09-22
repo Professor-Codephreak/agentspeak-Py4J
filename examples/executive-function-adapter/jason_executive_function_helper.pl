@@ -24,3 +24,6 @@ flp_ask_user(Question,TheAnswer) :-
 
 flp_query_flp(Query,Results) :-
 	user:query_agent_bindings(flp, localhost, [Result], flp_query_flp(Query,Result), [[Results]]).
+
+flp_ask_ws_user(Question,TheAnswer) :-
+	user:query_agent_bindings(flp, localhost, [Answer], flp_ask_ws_user(Question, Answer), [[TheAnswer]]).

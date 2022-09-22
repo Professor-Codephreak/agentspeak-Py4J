@@ -33,9 +33,11 @@
 +!waitOn(Term) <-
 	if (not .belief(Term)) {
 				.wait(10);
-				.print('.');
+				// .print('.');
 				!waitOn(Term)
 			       }.
+
+///////////////// 
 
 +query_agent_bindings(flp, localhost, _, flp_ask_user(Question, _), Results) <-
 	+flp_ask_user(Question,Results).
@@ -52,6 +54,35 @@
 -flp_ask_user('[|]'(_,_),Answer)[source(percept)] <-
 	.print('Converting...').
 
+///////////////// 
+
++query_agent_bindings(flp, localhost, _, flp_ask_ws_user(Question, _), Results) <-
+	+flp_ask_ws_user(Question,Results).
+
++flp_ask_ws_user('[|]'(A,B),Answer) <-
+	PengineList = '[|]'(A,B);
+	.print([pengineList,PengineList]);
+	!convert_from_pengine_list_to_jason_list(PengineList,JasonList);
+	.print([jasonList,JasonList]);
+	-flp_ask_ws_user(PengineList,Answer);
+	+flp_ask_ws_user(JasonList,Answer);
+	.print('Converted: ',flp_ask_ws_user(JasonList,Answer)).
+
+-flp_ask_ws_user('[|]'(_,_),Answer)[source(percept)] <-
+	.print('Converting...').
+
+/*
+// +efaMessage(Message) <-
+// 	.print([efaMessage(Message)]).
+
+	//!waitOn(efaMessage(Message));
+	//.print([efaMessage(Message)]).
+
+*/
+
+
+///////////////// 
+
 +query_agent_bindings(flp, localhost, _, flp_query_flp(Query, _), Results) <-
 	+flp_query_flp(Query,Results).
 
@@ -66,6 +97,8 @@
 
 -flp_query_flp('[|]'(_,_),Answer)[source(percept)] <-
 	.print('Converting...').
+
+///////////////// 
 
 +!convert_from_pengine_list_to_jason_list('[]',Output) <-
 	Output = [].

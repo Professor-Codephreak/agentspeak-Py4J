@@ -15,14 +15,14 @@
 */
 	
 +!elicit_entry(Agent,Entry,Type) <-
-	!flp_ask(['Please state your action/goal: '],Entry);
+	!flp_ask_ws(['Please state your action/goal: '],Entry);
 	.print(classify_entry(Agent,Entry,Type));
 	!classify_entry(Agent,Entry,Type);
 	.print(add_entry(Agent,Entry,Type));
 	!add_entry(Agent,Entry,Type).
 
 +!classify_entry(Agent,Entry,Type) <-
-	!flp_ask(['Please review: ',Entry,'Is it an goal or an action: '],Type);
+	!flp_ask_ws(['Please review: ',Entry,'. Is it an goal or an action: '],Type);
 	.print(type(Type)).
 
 +!add_entry(Agent,Entry,goal) <-
@@ -33,7 +33,7 @@
 	+hasAction(Agent,Entry).
 
 +hasGoal(Agent,Goal) : not currentlyObtainableForP(Agent,Goal) & not ~currentlyObtainableForP(Agent,Goal) <-
-	!flp_ask(['Consider this goal: ',Goal,'. Is it currently obtainable for: ',Agent,'. yes or no?: '],Answer);
+	!flp_ask_ws(['Consider this goal: ',Goal,'. Is it currently obtainable for: ',Agent,'. yes or no?: '],Answer);
 	.print('Answer: ',Answer);
 	if (.substring(Answer,'yes')) {
 			      .print("Yeha!");
@@ -84,7 +84,7 @@
 	.
 
 +!does_agent_have_the_necessary_resources_to_accomplish_goal(Agent,Goal) <-
- 	!flp_ask(['Does agent ',Agent,' have the necessary resources to accomplish: ',Goal],Answer);
+ 	!flp_ask_ws(['Does agent ',Agent,' have the necessary resources to accomplish: ',Goal],Answer);
  	if (.substring(Answer,'yes')) {
  				       .print("Yeha!");
  				       !identify_action_steps(Agent,Goal,ActionSteps);
