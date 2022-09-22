@@ -57,7 +57,7 @@
 ///////////////// 
 
 +query_agent_bindings(flp, localhost, _, flp_ask_ws_user(Question, _), Results) <-
-	+flp_ask_ws_user(Question,Results).
+	+flp_ask_ws_user(Question,_Results).
 
 +flp_ask_ws_user('[|]'(A,B),Answer) <-
 	PengineList = '[|]'(A,B);
@@ -70,16 +70,6 @@
 
 -flp_ask_ws_user('[|]'(_,_),Answer)[source(percept)] <-
 	.print('Converting...').
-
-/*
-// +efaMessage(Message) <-
-// 	.print([efaMessage(Message)]).
-
-	//!waitOn(efaMessage(Message));
-	//.print([efaMessage(Message)]).
-
-*/
-
 
 ///////////////// 
 
