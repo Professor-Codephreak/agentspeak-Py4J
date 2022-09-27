@@ -23,9 +23,6 @@ flp_ask_ws_user(Query,Answer) :-
 	%% flp_ask_user(Query,Answer),
 	getEfaMessage(Answer).
 
-
-efaMessage('Finish executive function system').
-
 getEfaMessage(Answer) :-
 	repeat,
 	findall(Message,efaMessage(Message),Messages),
@@ -39,3 +36,9 @@ efa_respond_to_jason(List,Result) :-
 	correctLists(List,[username,UserName,message,Message]),
 	assertz(efaMessage(Message)).
 
+efa_respond_to_jason_canned(List,Answer) :-
+	correctLists(List,[username,UserName,message,Message]),
+	view([efa_respond_to_jason_canned(Question,Answer)]),
+	hasCannedReply(Question,Answer),
+	view([efa_respond_to_jason_canned_answer,Answer]),
+	assertz(efaMessage(Answer)).
