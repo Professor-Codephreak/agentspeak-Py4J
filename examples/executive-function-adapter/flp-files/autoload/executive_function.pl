@@ -36,9 +36,14 @@ efa_respond_to_jason(List,Result) :-
 	correctLists(List,[username,UserName,message,Message]),
 	assertz(efaMessage(Message)).
 
+hasCannedReplyConcat(Message,Answer) :-
+	hasCannedReply(Question,Answer),
+	atomic_list_concat(Question,'',Message),
+	!.
+
 efa_respond_to_jason_canned(List,Answer) :-
 	correctLists(List,[username,UserName,message,Message]),
 	view([efa_respond_to_jason_canned(Question,Answer)]),
-	hasCannedReply(Question,Answer),
+	hasCannedReplyConcat(Message,Answer),
 	view([efa_respond_to_jason_canned_answer,Answer]),
 	assertz(efaMessage(Answer)).
