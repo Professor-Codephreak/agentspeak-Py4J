@@ -11,6 +11,6 @@ hasSubaction('Write down executive function skills','Obtain source of execution 
 
 hasCannedReply(['Please review: ','Obtain source of execution skills information','. Is it an goal or an action: '],action).
 
-hasCannedReply(['Does agent ','andrewDougherty',' have the necessary resources to accomplish: ','Finish executive function system'],no).
+hasCannedReply(['Does agent ','andrewDougherty',' have the necessary resources to accomplish: ','Finish executive function system','. yes or no?: '],no).
 
 hasNecessaryResources('andrewDougherty','Finish executive function system',['']).

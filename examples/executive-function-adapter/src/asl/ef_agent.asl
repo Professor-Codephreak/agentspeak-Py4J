@@ -47,7 +47,17 @@
 
 +currentlyObtainableForP(Agent,Goal) <-
 	.print('Agent: ',Agent,' has currently obtainable goal: ',Goal);
-	.print('Do not necessarily want to break down goal: ',Goal,' into subgoals').
+	.print('Do not necessarily want to break down goal: ',Goal,' into subgoals');
+	!flp_ask_ws(['Optional: break down: ',Goal,'. into subgoals? yes or no?: '],Answer);
+	.print('Answer: ',Answer);
+	if (.substring(Answer,'yes')) {
+			      .print("Yeha!");
+			      };
+	if (.substring(Answer,'no')) {
+				      .print("Boo hoo!");
+				      }
+	.
+
 
 +~currentlyObtainableForP(Agent,Goal) <-
 	.print('Agent: ',Agent,' has currently unobtainable goal: ',Goal);
@@ -70,6 +80,7 @@
 +hasAction(Agent,Action) <-
 	!get_subactions_for_action(Agent,Action,Subactions).
 
+/*
 +!get_subactions_for_action(Agent,Action,Subactions) <-
 	.print('Researching subactions to execute action',Action);
 	!flp_query(hasSubaction(Action,_Subaction),Subactions);
@@ -81,10 +92,11 @@
 						 !classify_entry(Agent,Entry,Type);
 						 !add_entry(Agent,Entry,Type);
 						 }
-	.
+	. 
+*/
 
 +!does_agent_have_the_necessary_resources_to_accomplish_goal(Agent,Goal) <-
- 	!flp_ask_ws(['Does agent ',Agent,' have the necessary resources to accomplish: ',Goal],Answer);
+ 	!flp_ask_ws(['Does agent ',Agent,' have the necessary resources to accomplish: ',Goal,'. yes or no?: '],Answer);
  	if (.substring(Answer,'yes')) {
  				       .print("Yeha!");
  				       !identify_action_steps(Agent,Goal,ActionSteps);
@@ -106,3 +118,19 @@
  	.print('Identifying necessary resources for goal: ',Goal);
  	!flp_query(hasNecessaryResources(Agent,Goal,_Resources),Resources);
  	.print('Necessary Resources: ',Resources).
+
+
+
++!get_subactions_for_action(Agent,Action,Subactions) <-
+	.print('Researching subactions to execute action',Action);
+	!flp_ask_ws(['List another subaction for action: "',Action,'", or if there are no more enter NULL'],Answer);
+	if (.substring('NULL',Answer) & .substring(Answer,'NULL'))
+	{
+	 .print('No more subactions.');
+	 } else
+	{
+	 .print('Entry:',Answer);
+	 !classify_entry(Agent,Answer,Type);
+	 !add_entry(Agent,Answer,Type);
+	 }
+	.
