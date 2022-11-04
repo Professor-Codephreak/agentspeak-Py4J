@@ -1,6 +1,6 @@
 unknown(A) :-
-    not(A) &
-    not(~A).
+	not(A) &
+	not(~A).
 
 
 test(isFileNameP,[atom(var_A),unknown(isa(var_A,existingFilename))],[exists_file(var_A)],[isa(var_A,existingFilename)]).
@@ -12,51 +12,51 @@ test(hasCorrespondingTextFile,[hasMIMEType(var_A,'pdf'),unknown(hasCorresponding
 
 +?substitute_vars([],Term,NewTerm) <- Term = NewTerm.
 +?substitute_vars(List,Term,NewTerm) : lisp(List) <-
-    Term =.. [P|Args];
-    .print("Args: ",Args);
-    .findall(NewArg,
-         (
-          .member(Arg,Args)
-         //  if(Arg == var_A)
-         // {
-         //  List = [NewArg|RestOfArgs];
-         //  } else
-         // {
-         //  NewArg = Arg;
-         //  }
-         ),
-         NewArgs);
-    NewTerm =.. [P|NewArgs].
+	Term =.. [P|Args];
+	.print("Args: ",Args);
+	.findall(NewArg,
+		 (   
+		     .member(Arg,Args)
+		 //  if(Arg == var_A)
+		 // {
+		     //  List = [NewArg|RestOfArgs];
+		     //  } else
+		 // {
+		     //  NewArg = Arg;
+		     //  }
+		 ),
+		 NewArgs);
+	NewTerm =.. [P|NewArgs].
 
 +!iaec(Item) :
-    test(TestName,Preconditions,EdgeFunctions,Effects) &
-    .findall(NewPrecondition,
-         (   
-             .member(Precondition,Preconditions) &
-         .print("	Precondition: ",Precondition) &
-         substitute_vars([Item],Precondition,NewPrecondition) &
-         (   
-             .eval(true,NewPrecondition) | NewPrecondition)
-         ),
-         SuccessfulPreconditions) &
-    .length(Preconditions,Length) &
-    .length(SuccessfulPreconditions,Length)
-    <-
-        .print([TestName,' precondions checked']);
-        for(.member(EdgeFunction,EdgeFunctions))
-        {
-         .print("	EdgeFunction: ",EdgeFunction);
-         .eval(_Result,EdgeFunction);
-         }
-        .print([TestName,' edge functions evaled']);
-        for(.member(Effect,Effects))
-        {
-         .print("	Effect: ",Effect);
-         +Effect;
-         }
-        .print([TestName,' effects added to belief base']);
-        !iaec(Item).
+	test(TestName,Preconditions,EdgeFunctions,Effects) &
+	.findall(NewPrecondition,
+		 (   
+		     .member(Precondition,Preconditions) &
+		 .print("	Precondition: ",Precondition) &
+		 substitute_vars([Item],Precondition,NewPrecondition) &
+		 (   
+		     .eval(true,NewPrecondition) | NewPrecondition)
+		 ),
+		 SuccessfulPreconditions) &
+	.length(Preconditions,Length) &
+	.length(SuccessfulPreconditions,Length)
+	<-
+		.print([TestName,' precondions checked']);
+		for(.member(EdgeFunction,EdgeFunctions))
+		{
+		 .print("	EdgeFunction: ",EdgeFunction);
+		 .eval(_Result,EdgeFunction);
+		 }
+		.print([TestName,' edge functions evaled']);
+		for(.member(Effect,Effects))
+		{
+		 .print("	Effect: ",Effect);
+		 +Effect;
+		 }
+		.print([TestName,' effects added to belief base']);
+		!iaec(Item).
 -!iaec(Item) <-
-    .print("Preconditions Failed").
+	.print("Preconditions Failed").
 
 !iaec('/home/andrewdo/morbini-phd-thesis.pdf').

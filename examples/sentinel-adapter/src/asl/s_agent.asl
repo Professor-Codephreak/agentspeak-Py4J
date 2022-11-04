@@ -1,17 +1,17 @@
 
 /* see also:
 
-/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function.pl
-/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function_domain__executive_function.pl
-/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function_domain__become_counselor.pl
-/var/lib/myfrdcsa/codebases/minor/executive-function/data-git/executive_function.txt
+/var/lib/myfrdcsa/codebases/minor/sentinel/frdcsa/sys/flp/autoload/sentinel.pl
+/var/lib/myfrdcsa/codebases/minor/sentinel/frdcsa/sys/flp/autoload/sentinel_domain__sentinel.pl
+/var/lib/myfrdcsa/codebases/minor/sentinel/frdcsa/sys/flp/autoload/sentinel_domain__become_counselor.pl
+/var/lib/myfrdcsa/codebases/minor/sentinel/data-git/sentinel.txt
 
-/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/to.do
-/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl
-/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/executive_function.asl
+/var/lib/myfrdcsa/collaborative/git/jason/examples/sentinel-adapter/src/asl/to.do
+/var/lib/myfrdcsa/collaborative/git/jason/examples/sentinel-adapter/src/asl/agent2.asl
+/var/lib/myfrdcsa/collaborative/git/jason/examples/sentinel-adapter/src/asl/sentinel.asl
 
-/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_helper.pl
-/var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/jason_executive_function_wrapper.pl
+/var/lib/myfrdcsa/collaborative/git/jason/examples/sentinel-adapter/jason_sentinel_helper.pl
+/var/lib/myfrdcsa/collaborative/git/jason/examples/sentinel-adapter/jason_sentinel_wrapper.pl
 */
 
 // Jason Agentspeak	
