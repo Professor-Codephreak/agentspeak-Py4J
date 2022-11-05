@@ -1,10 +1,10 @@
 
 /* see also:
 
-/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function.pl
-/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function_domain__executive_function.pl
-/var/lib/myfrdcsa/codebases/minor/executive-function/frdcsa/sys/flp/autoload/executive_function_domain__become_counselor.pl
-/var/lib/myfrdcsa/codebases/minor/executive-function/data-git/executive_function.txt
+/var/lib/myfrdcsa/codebases/minor/executive-function-assistant/frdcsa/sys/flp/autoload/executive_function.pl
+/var/lib/myfrdcsa/codebases/minor/executive-function-assistant/frdcsa/sys/flp/autoload/executive_function_domain__executive_function.pl
+/var/lib/myfrdcsa/codebases/minor/executive-function-assistant/frdcsa/sys/flp/autoload/executive_function_domain__become_counselor.pl
+/var/lib/myfrdcsa/codebases/minor/executive-function-assistant/data-git/executive_function.txt
 
 /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/to.do
 /var/lib/myfrdcsa/collaborative/git/jason/examples/executive-function-adapter/src/asl/agent2.asl
