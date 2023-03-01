@@ -24,10 +24,10 @@ MAS linuxremotecontrol2adapter {
        jason.control.ExecutionControl
 
     agents:
-       linux_remote_control_2_1 linux_remote_control_2; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
-       poll_prolog_1 poll_prolog; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
+       // linux_remote_control_2_1 linux_remote_control_2; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
        agent_smith_1 agent_smith;
-       
+       poll_prolog_1 poll_prolog; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
+
     classpath:
         "/usr/lib/swi-prolog/lib/jpl.jar";
         "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so";
