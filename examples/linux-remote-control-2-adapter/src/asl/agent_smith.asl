@@ -101,9 +101,12 @@
 +!run6 <-
 	!initializeCommands;
 	.wait(1000);
-	!elicit_entry(andrewDougherty,Entry,Type).
+	// !elicit_entry(andrewDougherty,Entry,Type).
+	!elicit_ashell_command(andrewDougherty,'',Command,Output).
 
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/agent2.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/as_agent.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/ashell.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/agent_smith_tests.asl") }
 
 !run6.

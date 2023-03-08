@@ -20,3 +20,4 @@ method(cd(Dir1,Dir2),cd(Dir2)).
 method(flp_ask(Question,Answer),flp_ask_user(Question,Answer)).
 method(flp_query(Question,Answer),flp_query_flp(Question,Answer)).
 method(flp_ask_ws(Question,Answer),flp_ask_ws_user(Question,Answer)).
+method(flp_tell_ws(Question,Answer),flp_tell_ws_user(Question,Answer)).
