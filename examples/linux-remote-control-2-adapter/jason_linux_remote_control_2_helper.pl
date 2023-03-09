@@ -31,3 +31,6 @@ flp_query_flp(Query,Results) :-
 
 flp_ask_ws_user(Question,TheAnswer) :-
 	user:query_agent_bindings(flp, localhost, [Answer], flp_ask_ws_user(Question, Answer), [[TheAnswer]]).
+
+flp_query_cyc_user(Question,TheAnswer) :-
+	user:query_agent_bindings(flp, localhost, [Answer], flp_query_cyc_user(Question, Answer), [[TheAnswer]]).

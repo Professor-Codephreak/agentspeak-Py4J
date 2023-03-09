@@ -1,5 +1,12 @@
 :- dynamic lrcMessage/1.
 
+flp_query_cyc_user(Question,Answer) :-
+	view([flp_query_cyc_user(Question,Answer)]),
+	Question = ['',Prolog],
+	call(Prolog),
+	%% cycQuery(Question,'EverythingPSC',Answer),
+	view([answer,Answer]).
+
 flp_ask_user(Question,Answer) :-
 	view([flp_ask_user(Question,Answer)]),
 	hasCannedReply(Question,Answer),
