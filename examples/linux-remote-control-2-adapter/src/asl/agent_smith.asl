@@ -98,7 +98,7 @@
 	!convert_from_pengine_list_to_jason_list(Second,Result);
 	.concat([First],Result,Output).
 
-+!run6 <-
++initializeAgentSmith <-
 	!initializeCommands;
 	.wait(1000);
 	// !elicit_entry(andrewDougherty,Entry,Type).
@@ -108,5 +108,9 @@
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/as_agent.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/ashell.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/agent_smith_tests.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/cyc_client.asl") }
 
-!run6.
+// Fails because: Alarm
+// !queryCycTest.
+
+!initializeAgentSmith.

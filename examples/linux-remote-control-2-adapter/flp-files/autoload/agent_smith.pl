@@ -28,9 +28,18 @@ getLrcMessage(Answer) :-
 	findall(Message,lrcMessage(Message),Messages),
 	length(Messages,L),
 	(   (	L > 0) ->
-	    (	Messages = [Answer|_],retractall(lrcMessage(_)),!) ;
+	    (	view([messages,Messages]),Messages = [Answer|_],retractall(lrcMessage(_)),!) ;
 	    (	sleep(1),
 		fail)).
+
+%% getLrcMessageNewButNotNecessary(Answer) :-
+%% 	repeat,
+%% 	findall(Message,lrcMessage(Message),Messages),
+%% 	length(Messages,L),
+%% 	(   (	L > 0) ->
+%% 	    (	view([messages,Messages]),Messages = [Answer|_],retract(lrcMessage(Answer)),!) ;
+%% 	    (	sleep(1),
+%% 		fail)).
 
 lrc_respond_to_jason(List,Result) :-
 	correctLists(List,[username,UserName,message,Message]),

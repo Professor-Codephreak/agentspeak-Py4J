@@ -1,3 +1,5 @@
+// implement the ability to call Jason/AgentSpeak(L) from AgentSmith websocket interface
+
 +!elicit_ashell_command(Agent,PreviousOutput,Command,Output) <-
 	!flp_ask_ws([PreviousOutput,'AShell Command: '],Command);
 	.print(process_ashell_command(Agent,Command,Output));
