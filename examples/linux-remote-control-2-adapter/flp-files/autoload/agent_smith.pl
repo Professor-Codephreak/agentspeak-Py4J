@@ -1,11 +1,26 @@
 :- dynamic lrcMessage/1.
 
-flp_query_cyc_user(Question,Answer) :-
-	view([flp_query_cyc_user(Question,Answer)]),
-	Question = ['',Prolog],
-	call(Prolog),
-	%% cycQuery(Question,'EverythingPSC',Answer),
-	view([answer,Answer]).
+%% flp_query_cyc_user(Question,Answer) :-
+%% 	view([flp_query_cyc_user(Question,Answer)]),
+%% 	Question = ['',SubL],
+%% 	%% cycQuery(SubL,'EverythingPSC',Answer),
+%% 	Answer = 'kmax-not-yet-implemented',
+%% 	view([answer,Answer]).
+
+%% flp_query_cyc_user(Question,Response) :-
+%% 	view([flp_query_cyc_user(Question,Response)]),
+%% 	Question = ['',Query],
+%% 	findall(Query,call(Query),Response).
+
+flp_query_cyc_user(Question,Response) :-
+	view([flp_query_cyc_user(Question,Response)]),
+	Question = [Vars,Query],
+	findall(Vars,call(Query),Response).
+
+query_agent_bindings(Agent,Host,Vars,Message,Results) :-
+	query_agent(Agent,Host,Message,Result),
+
+
 
 flp_ask_user(Question,Answer) :-
 	view([flp_ask_user(Question,Answer)]),

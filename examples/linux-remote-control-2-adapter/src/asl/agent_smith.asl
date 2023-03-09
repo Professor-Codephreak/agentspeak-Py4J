@@ -93,27 +93,44 @@
 +query_agent_bindings(flp, localhost, _, flp_query_cyc_user(Query,Mt,_), Results) <-
 	+flp_query_cyc_user(Question,Results).
 
+// +flp_query_cyc_user('[|]'(A,B),Answer) <-
+// 	PengineList = '[|]'(A,B);
+// 	.print([pengineList,PengineList]);
+// 	!convert_from_pengine_list_to_jason_list(PengineList,JasonList);
+// 	.print([jasonList,JasonList]);
+// 	-flp_ask_user(PengineList,Answer);
+// 	+flp_ask_user(JasonList,Answer);
+// 	.print('Converted: ',flp_ask_user(JasonList,Answer)).
+
 +flp_query_cyc_user('[|]'(A,B),Answer) <-
-	PengineList = '[|]'(A,B);
-	.print([pengineList,PengineList]);
-	!convert_from_pengine_list_to_jason_list(PengineList,JasonList);
+	// PengineList = '[|]'(A,B);
+	// .print([pengineList,PengineList]);
+	!convert_from_pengine_list_to_jason_list(Answer,JasonList);
 	.print([jasonList,JasonList]);
 	-flp_ask_user(PengineList,Answer);
 	+flp_ask_user(JasonList,Answer);
-	.print('Converted: ',flp_ask_user(JasonList,Answer)).
+	.print('Converted: ',flp_ask_user('[|]'(A,B),Answer)).
 
 -flp_query_cyc_user('[|]'(_,_),Answer)[source(percept)] <-
 	.print('Converting...').
 
 ///////////////// 
 
++!convert_from_pengine_list_to_jason_list('[|]'(First,'[]'),Result1) <-
+	!convert_from_pengine_list_to_jason_list(First,Result1).
+
 +!convert_from_pengine_list_to_jason_list('[]',Output) <-
 	Output = [].
 
-+!convert_from_pengine_list_to_jason_list(Input,Output) <-
-	Input = '[|]'(First,Second);
-	!convert_from_pengine_list_to_jason_list(Second,Result);
-	.concat([First],Result,Output).
++!convert_from_pengine_list_to_jason_list('[|]'(First,Second),Output) : Second \== '[]' <-
+	!convert_from_pengine_list_to_jason_list(First,Result1);
+	!convert_from_pengine_list_to_jason_list(Second,Result2);
+	// .print('output: ',Output).
+	.concat(Result1,Result2,Output).
+
++!convert_from_pengine_list_to_jason_list(First,[First]) : .atom(First) <-
+	true.
+
 
 +initializeAgentSmith <-
 	!initializeCommands;
@@ -127,13 +144,23 @@
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/agent_smith_tests.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/linux-remote-control-2-adapter/src/asl/cyc_client.asl") }
 
-+!queryCycTest <-
+
+
++!queryCycTest2 <-
 	!initializeCommands;
 	.wait(1000);
-	!flp_query_cyc(['',member(X,[a,b,c,d])],Results);
+	!flp_query(member(X,[1,2]),Results);
+	.print('Results: ',Results).
+
++!queryCycTest1 <-
+	!initializeCommands;
+	.wait(1000);
+	!flp_query_cyc([[X],member(X,[a,b,c,d])],Results);
 	.print('Results: ',Results).
 
 // Fails because: Alarm
-!queryCycTest.
+!queryCycTest1.
 
 // !initializeAgentSmith.
+// !flp_query(cycQuery(isa(X,'Dog'),'BaseKB',Res1),Results);
+// !flp_query_cyc(['',isa(X,'Dog')],Results);
