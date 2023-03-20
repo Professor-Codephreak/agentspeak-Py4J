@@ -24,7 +24,7 @@ MAS iaecadapter {
        jason.control.ExecutionControl
 
     agents:
-       iaec1 iaec [mindinspector="gui(cycle,html)"];
+       iaec1 iaec; // [mindinspector="gui(cycle,html)"];
        //       prolog1 prolog [mindinspector="gui(cycle,html)"];
 
     classpath:

@@ -116,7 +116,7 @@
 
 ///////////////// 
 
-+!convert_from_pengine_list_to_jason_list('[|]'(First,'[]'),Result1) <-
++!convert_from_pengine_list_to_jason_list('[|]'(First,'[]'),[Result1]) <-
 	!convert_from_pengine_list_to_jason_list(First,Result1).
 
 +!convert_from_pengine_list_to_jason_list('[]',Output) <-
@@ -126,13 +126,13 @@
 	!convert_from_pengine_list_to_jason_list(First,Result1);
 	!convert_from_pengine_list_to_jason_list(Second,Result2);
 	// .print('output: ',Output).
-	.concat(Result1,Result2,Output).
+	.concat([Result1],Result2,Output).
 
-+!convert_from_pengine_list_to_jason_list(First,[First]) : .atom(First) <-
++!convert_from_pengine_list_to_jason_list(First,First) : .atom(First) <-
 	true.
 
 
-+initializeAgentSmith <-
++!initializeAgentSmith <-
 	!initializeCommands;
 	.wait(1000);
 	// !elicit_entry(andrewDougherty,Entry,Type).
@@ -155,12 +155,14 @@
 +!queryCycTest1 <-
 	!initializeCommands;
 	.wait(1000);
-	!flp_query_cyc([[X],member(X,[a,b,c,d])],Results);
+	// !flp_query_cyc([[X],member(X,[a,b,c,d])],Results);
+	!flp_query_cyc([[X],isa(X,'Dog')],Results);
 	.print('Results: ',Results).
 
 // Fails because: Alarm
-!queryCycTest1.
+// !queryCycTest1.
 
-// !initializeAgentSmith.
-// !flp_query(cycQuery(isa(X,'Dog'),'BaseKB',Res1),Results);
-// !flp_query_cyc(['',isa(X,'Dog')],Results);
+!initializeAgentSmith.
+
+// !flp_query(cycQuery(isa(X,'Dog'),'BaseKB',Res1),Results).
+// !flp_query_cyc(['',isa(X,'Dog')],Results).

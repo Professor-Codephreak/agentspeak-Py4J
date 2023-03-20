@@ -65,10 +65,14 @@ queueMessageToJason(Goal) :-
 	log(1,[queueMessageToJason(Goal)]),
 	assertz(messageQueue(Goal)).
 
+%% jpl_poll_messages(_Agent,Goals) :-
+%% 	findall(Goal,messageQueue(Goal),Goals),
+%% 	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true),
+%% 	retractall(messageQueue(_)).
+
 jpl_poll_messages(_Agent,Goals) :-
-	findall(Goal,messageQueue(Goal),Goals),
-	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true),
-	retractall(messageQueue(_)).
+	findall(Goal,(messageQueue(Goal),retract(messageQueue(Goal))),Goals),
+	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true).
 
 flp(Vars,Term) :-
 	query_agent_bindings(flp,'localhost',Vars,Term,Results).
