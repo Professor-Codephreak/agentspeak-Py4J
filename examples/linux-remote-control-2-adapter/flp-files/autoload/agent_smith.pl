@@ -71,7 +71,7 @@ getLrcMessage(Answer) :-
 	findall(Message,lrcMessage(Message),Messages),
 	length(Messages,L),
 	(   (	L > 0) ->
-	    (	view([lrcMessages,Messages]),Messages = [Answer|_],retract(lrcMessage(Answer)),!) ;
+	    (	view([lrcMessages,Messages]),(Messages = [Answer|_] -> true ; true),retract(lrcMessage(Answer)),!) ;
 	    (	sleep(1),
 		fail)).
 
