@@ -24,14 +24,10 @@ MAS manageradapter {
        jason.control.ExecutionControl
 
     agents:
-       // manager_1 manager; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
-       manager_1 manager;
-       poll_prolog_1 poll_prolog; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
+       manager1 manager [mindinspector="gui(cycle,html)"];
 
     classpath:
         "/usr/lib/swi-prolog/lib/jpl.jar";
         "/usr/lib/swi-prolog/lib/x86_64-linux/libjpl.so";
-
-    aslSourcePath: "src/asl";
 
 }
