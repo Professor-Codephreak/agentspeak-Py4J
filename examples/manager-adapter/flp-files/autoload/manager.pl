@@ -17,6 +17,10 @@
 %% 	Question = [Vars,Query],
 %% 	findall(Vars,call(Query),Response).
 
+%% test_manager_assistant :-
+%% 	test_flp_query(Response),
+%% 	view([response,Response]).
+
 test_flp_query(Response) :-
 	flp_query_cyc_user([[X],isa(X,'Dog')],Response).
 

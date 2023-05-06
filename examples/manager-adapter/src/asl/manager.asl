@@ -143,5 +143,6 @@
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/manager-adapter/src/asl/ashell.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/manager-adapter/src/asl/manager_tests.asl") }
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/manager-adapter/src/asl/cyc_client.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/manager-adapter/src/asl/manager-20230503.asl") }
 
 !initializeManager.
