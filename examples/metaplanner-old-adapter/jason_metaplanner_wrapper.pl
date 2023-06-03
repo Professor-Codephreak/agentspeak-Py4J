@@ -10,7 +10,7 @@ isa(metaplanner,actor).
 flag(jasonIntegration,true).
 flag(log,10).
 
-%% :- consult('/var/lib/myfrdcsa/codebases/minor/metaplanner-assistant/jason/environments/metaplanner/metaplanner.pl').
+%% :- consult('/var/lib/myfrdcsa/codebases/minor/agentspeak-frdcsa/jason/environments/metaplanner/metaplanner.pl').
 
 prolog_consult(File) :-
 	consult(File).
@@ -65,14 +65,10 @@ queueMessageToJason(Goal) :-
 	log(1,[queueMessageToJason(Goal)]),
 	assertz(messageQueue(Goal)).
 
-%% jpl_poll_messages(_Agent,Goals) :-
-%% 	findall(Goal,messageQueue(Goal),Goals),
-%% 	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true),
-%% 	retractall(messageQueue(_)).
-
 jpl_poll_messages(_Agent,Goals) :-
-	findall(Goal,(messageQueue(Goal),retract(messageQueue(Goal))),Goals),
-	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true).
+	findall(Goal,messageQueue(Goal),Goals),
+	(   (	length(Goals,N),N > 0) -> log(1,[goals,Goals]) ; true),
+	retractall(messageQueue(_)).
 
-flp(Vars,Term) :-
-	query_agent_bindings(flp,'localhost',Vars,Term,Results).
+%% flp(Vars,Term) :-
+%% 	query_agent_bindings(flp,'localhost',Vars,Term,Results).

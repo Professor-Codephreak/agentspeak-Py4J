@@ -1,15 +1,5 @@
 /*
-In this system, two agents are inside a room and
-one agent (the claustrophobe) wants to maintain
-the door always unlocked, while another (the paranoid)
-wants to maintain it locked!
-
-The porter is the agent that is capable to (un)lock
-the door (i.e., to act in the environment). So other
-agents should ask him such services.
-
-A Prometheus specification is available in the doc folder.
-
+/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/ef_agent.asl
 */
 
 MAS metaplanneradapter {
@@ -24,8 +14,7 @@ MAS metaplanneradapter {
        jason.control.ExecutionControl
 
     agents:
-       // metaplanner_1 metaplanner; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
-       metaplanner_1 metaplanner;
+       metaplanner_1 metaplanner; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
        poll_prolog_1 poll_prolog; // [nrcbp=25] [mindinspector="gui(cycle,html)"];
 
     classpath:

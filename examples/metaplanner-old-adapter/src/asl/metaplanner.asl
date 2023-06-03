@@ -90,59 +90,20 @@
 
 ///////////////// 
 
-+query_agent_bindings(flp, localhost, _, flp_query_cyc_user(Query,Mt,_), Results) <-
-	+flp_query_cyc_user(Question,Results).
-
-// +flp_query_cyc_user('[|]'(A,B),Answer) <-
-// 	PengineList = '[|]'(A,B);
-// 	.print([pengineList,PengineList]);
-// 	!convert_from_pengine_list_to_jason_list(PengineList,JasonList);
-// 	.print([jasonList,JasonList]);
-// 	-flp_ask_user(PengineList,Answer);
-// 	+flp_ask_user(JasonList,Answer);
-// 	.print('Converted: ',flp_ask_user(JasonList,Answer)).
-
-+flp_query_cyc_user('[|]'(A,B),Answer) <-
-	// PengineList = '[|]'(A,B);
-	// .print([pengineList,PengineList]);
-	!convert_from_pengine_list_to_jason_list(Answer,JasonList);
-	.print([jasonList,JasonList]);
-	-flp_ask_user(PengineList,Answer);
-	+flp_ask_user(JasonList,Answer);
-	.print('Converted: ',flp_ask_user('[|]'(A,B),Answer)).
-
--flp_query_cyc_user('[|]'(_,_),Answer)[source(percept)] <-
-	.print('Converting...').
-
-///////////////// 
-
-+!convert_from_pengine_list_to_jason_list('[|]'(First,'[]'),[Result1]) <-
-	!convert_from_pengine_list_to_jason_list(First,Result1).
-
 +!convert_from_pengine_list_to_jason_list('[]',Output) <-
 	Output = [].
 
-+!convert_from_pengine_list_to_jason_list('[|]'(First,Second),Output) : Second \== '[]' <-
-	!convert_from_pengine_list_to_jason_list(First,Result1);
-	!convert_from_pengine_list_to_jason_list(Second,Result2);
-	// .print('output: ',Output).
-	.concat([Result1],Result2,Output).
++!convert_from_pengine_list_to_jason_list(Input,Output) <-
+	Input = '[|]'(First,Second);
+	!convert_from_pengine_list_to_jason_list(Second,Result);
+	.concat([First],Result,Output).
 
-+!convert_from_pengine_list_to_jason_list(First,First) : .atom(First) <-
-	true.
-
-
-+!initializeMetaplanner <-
++!run6 <-
 	!initializeCommands;
 	.wait(1000);
-	// !elicit_entry(andrewDougherty,Entry,Type).
-	!elicit_ashell_command(andrewDougherty,'',Command,Output).
+	!elicit_entry(andrewDougherty,Entry,Type).
 
 { include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/agent2.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/metaplanner_agent.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/ashell.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/metaplanner_tests.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/cyc_client.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/metaplanner-20230503.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/ef_agent.asl") }
 
-!initializeMetaplanner.
+!run6.

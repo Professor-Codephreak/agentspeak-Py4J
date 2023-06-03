@@ -14,3 +14,9 @@ hasCannedReply(['Please review: ','Obtain source of execution skills information
 hasCannedReply(['Does agent ','andrewDougherty',' have the necessary resources to accomplish: ','Finish executive function system','. yes or no?: '],no).
 
 hasNecessaryResources('andrewDougherty','Finish executive function system',['']).
+
+/*
+  Add to this the notion if, is the task urgent or big and looming?
+  If so, do not work on it, but first work on a smaller task in order to
+  build momentum, like a high jumper would.
+*/
