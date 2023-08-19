@@ -49,7 +49,7 @@
 %% 	correctLists(Query,QueryCorrected),
 %% 	view([flp_ask_ws_user(QueryCorrected,Response)]),
 %% 	atomic_list_concat(Query,'',TmpQueryAtom),
-%% 	atom_concat('as-call ',TmpQueryAtom,QueryAtom),
+%% 	atom_concat('jaswipl-call as ',TmpQueryAtom,QueryAtom),
 %% 	view([queryAtom,QueryAtom]),
 %% 	atomic_list_concat(['unilang-client -q -r FCMS -c "',QueryAtom,'"'],'',Command),
 %% 	shell_command_to_string(Command,Result),

@@ -26,3 +26,4 @@ method(flp_query(Question,Answer),flp_query_flp(Question,Answer)).
 method(flp_ask_ws(Question,Answer),flp_ask_ws_user(Question,Answer)).
 method(flp_tell_ws(Question,Answer),flp_tell_ws_user(Question,Answer)).
 method(flp_query_cyc(Query,Answer),flp_query_cyc_user(Query,Answer)).
+

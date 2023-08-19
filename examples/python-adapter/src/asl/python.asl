@@ -132,17 +132,17 @@
 	true.
 
 
-+!initializeMetaplanner <-
++!initializePython <-
 	!initializeCommands;
 	.wait(1000);
 	// !elicit_entry(andrewDougherty,Entry,Type).
 	!elicit_ashell_command(andrewDougherty,'',Command,Output).
 
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/agent2.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/metaplanner_agent.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/ashell.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/metaplanner_tests.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/cyc_client.asl") }
-{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/metaplanner-adapter/src/asl/metaplanner-20230603.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/python-adapter/src/asl/agent2.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/python-adapter/src/asl/python_agent.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/python-adapter/src/asl/ashell.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/python-adapter/src/asl/python_tests.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/python-adapter/src/asl/cyc_client.asl") }
+{ include("/var/lib/myfrdcsa/collaborative/git/jason/examples/python-adapter/src/asl/python-20230603.asl") }
 
-!initializeMetaplanner.
+!initializePython.
