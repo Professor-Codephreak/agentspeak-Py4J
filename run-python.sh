@@ -4,5 +4,6 @@
 # /var/lib/myfrdcsa/codebases/minor/fcms/FCMS/begin-ai2-websockets.sh
 # for *FCMS* in order to get EFA to work
 
-# examples/metaplanner-adapter/src/asl
+# examples/python-adapter/src/asl
+# examples/python-adapter/src/java
 ./frdcsa-cli.sh examples/python-adapter/Python.mas2j

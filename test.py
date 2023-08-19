@@ -10,5 +10,5 @@ stack.pop()
 u'Second item'
 stack.pop()
 u'First item'
-# stack.pop()
-# u'Initial Item'
+stack.pop()
+u'Initial Item'

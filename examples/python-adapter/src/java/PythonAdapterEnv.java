@@ -8,24 +8,31 @@ import org.jpl7.Query;
 import org.jpl7.Term;
 import org.jpl7.Variable;
 
-import src.java.JavaEntryPoint;
+import py4j.examples.StackEntryPoint;
 
 public class PythonAdapterEnv extends Environment {
 
     // Literal init0  = Literal.parseLiteral("continue");
 
+    private StackEntryPoint stack_entry_point;
+
     @Override
     public void init(String[] args) {
+	this.stack_entry_point = new StackEntryPoint();
+	String[] myargs = new String[0];
+	this.stack_entry_point.startStackEntryPoint();
 	Query.oneSolution("consult('jason_python_wrapper.pl')");
         // initial perceptsd
         // addPercept(init0);
     }
 
-    JavaEntryPoint entrypoint = new JavaEntryPoint();
-
     public Environment getEnvironment() {
 	return this;
     }
+
+    // public String StartStackEntryPoint() {
+    // 	this.stack_entry_point.startStackEntryPoint();
+    // }
 
     public String processPrologCall(Term[] arr) {
 	System.out.println("Started call from Prolog");
