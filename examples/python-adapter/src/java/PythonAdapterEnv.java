@@ -20,7 +20,7 @@ public class PythonAdapterEnv extends Environment {
     public void init(String[] args) {
 	this.stack_entry_point = new StackEntryPoint();
 	String[] myargs = new String[0];
-	this.stack_entry_point.startStackEntryPoint();
+	this.stack_entry_point.main(myargs);
 	Query.oneSolution("consult('jason_python_wrapper.pl')");
         // initial perceptsd
         // addPercept(init0);

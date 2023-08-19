@@ -4,8 +4,7 @@ import py4j.GatewayServer;
 
 public class StackEntryPoint {
 
-    private Stack stack;
-
+    public Stack stack;
     public StackEntryPoint() {
 	System.out.println("Creating StackEntryPoint");
 	stack = new Stack();
@@ -18,8 +17,11 @@ public class StackEntryPoint {
     }
 
     public void startStackEntryPoint()  {
+    }
+
+    public static void main(String[] args) {
 	System.out.println("Starting Gateway Server...");
-	GatewayServer gatewayServer = new GatewayServer();
+	GatewayServer gatewayServer = new GatewayServer(new StackEntryPoint());
 	gatewayServer.start();
 	System.out.println("Gateway Server Started");
     }
