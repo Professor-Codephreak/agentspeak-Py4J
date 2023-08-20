@@ -8,19 +8,20 @@ import org.jpl7.Query;
 import org.jpl7.Term;
 import org.jpl7.Variable;
 
-import py4j.examples.StackEntryPoint;
+// import py4j.examples.StackEntryPoint;
+import py4j.examples.JavaAgentSpeakClient;
 
 public class PythonAdapterEnv extends Environment {
 
     // Literal init0  = Literal.parseLiteral("continue");
 
-    private StackEntryPoint stack_entry_point;
+    private JavaAgentSpeakClient java_agentspeak_client;
 
     @Override
     public void init(String[] args) {
-	this.stack_entry_point = new StackEntryPoint();
+	this.java_agentspeak_client = new JavaAgentSpeakClient();
 	String[] myargs = new String[0];
-	this.stack_entry_point.main(myargs);
+	this.java_agentspeak_client.main(myargs);
 	Query.oneSolution("consult('jason_python_wrapper.pl')");
         // initial perceptsd
         // addPercept(init0);
@@ -29,10 +30,6 @@ public class PythonAdapterEnv extends Environment {
     public Environment getEnvironment() {
 	return this;
     }
-
-    // public String StartStackEntryPoint() {
-    // 	this.stack_entry_point.startStackEntryPoint();
-    // }
 
     public String processPrologCall(Term[] arr) {
 	System.out.println("Started call from Prolog");
@@ -120,3 +117,4 @@ public class PythonAdapterEnv extends Environment {
 	}
     }
 }
+

@@ -10,7 +10,7 @@ import pprint
 from py4j.java_gateway import JavaGateway, java_import
 
 gateway = JavaGateway()
-java_import(gateway.jvm, "py4j.examples.StackEntryPoint")
+java_import(gateway.jvm, "py4j.examples.JavaAgentSpeakClient")
 
 actions = agentspeak.Actions(agentspeak.stdlib.actions)
 
